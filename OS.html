@@ -1,1 +1,643 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مخطط المشاريع — التقرير التفصيلي الكامل | 55 منصة | 17 أكتوبر 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;overflow:hidden}
+  :root{
+    --bg:#0a0f1e;--surface:rgba(255,255,255,.035);--surface-2:rgba(255,255,255,.06);
+    --border:rgba(255,255,255,.09);--border-strong:rgba(255,255,255,.18);
+    --text:#e8eef7;--text-2:#94a3b8;--text-3:#64748b;
+    --gold:#d4a656;--gold-bg:rgba(212,166,86,.12);
+    --blue:#60a5fa;--blue-bg:rgba(96,165,250,.12);
+    --green:#4ade80;--green-bg:rgba(74,222,128,.12);
+    --red:#f87171;--red-bg:rgba(248,113,113,.12);
+    --purple:#a78bfa;--purple-bg:rgba(167,139,250,.12);
+    --cyan:#22d3ee;--cyan-bg:rgba(34,211,238,.12);
+  }
+  body{font-family:'Tajawal',system-ui,sans-serif;background:var(--bg);color:var(--text);overflow:hidden;-webkit-font-smoothing:antialiased}
+  .deck{position:relative;width:100vw;height:100vh;background:radial-gradient(ellipse at top right,rgba(96,165,250,.08),transparent 50%),radial-gradient(ellipse at bottom left,rgba(212,166,86,.06),transparent 50%),var(--bg)}
+  .deck::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:44px 44px;pointer-events:none;z-index:0}
 
+  .slide{position:absolute;inset:0;display:flex;flex-direction:column;padding:22px 20px 76px;opacity:0;visibility:hidden;transition:opacity .4s ease,transform .4s ease;transform:translateY(14px);overflow-y:auto;z-index:1}
+  .slide.active{opacity:1;visibility:visible;transform:translateY(0)}
+  .slide::-webkit-scrollbar{width:6px}
+  .slide::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:3px}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.6px;margin-bottom:4px}
+  .eyebrow::before{content:'';width:20px;height:1.5px;background:var(--gold)}
+  .title-lg{font-size:clamp(20px,2.2vw,26px);font-weight:800;line-height:1.2;letter-spacing:-.4px}
+  .slide-head{margin-bottom:10px;flex-shrink:0}
+  .slide-head .sub{font-size:12px;color:var(--text-2);margin-top:3px;line-height:1.5;max-width:1400px}
+
+  /* COVER */
+  .cover{display:flex;flex-direction:column;justify-content:center;padding:44px 68px;position:relative}
+  .cover-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:auto}
+  .cover-brand{font-size:13px;font-weight:700;color:var(--text-3);letter-spacing:1px}
+  .cover-date{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;background:var(--surface);border:1px solid var(--border);border-radius:100px;font-size:13px;color:var(--text-2);font-weight:600}
+  .cover-date::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold)}
+  .cover-body{margin:auto 0;max-width:840px}
+  .cover-title{font-size:clamp(38px,5vw,68px);font-weight:900;line-height:1;letter-spacing:-2px;margin-bottom:14px;background:linear-gradient(135deg,#fff 30%,#94a3b8);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .cover-sub{font-size:clamp(14px,1.4vw,17px);font-weight:500;color:var(--text-2);line-height:1.55;margin-bottom:24px;max-width:680px}
+  .cover-meta{display:flex;gap:12px;flex-wrap:wrap}
+  .cov-chip{display:inline-flex;flex-direction:column;gap:2px;padding:11px 16px;background:var(--surface);border:1px solid var(--border);border-radius:14px;min-width:110px}
+  .cov-chip strong{font-size:22px;font-weight:900;color:var(--gold);line-height:1;letter-spacing:-.5px}
+  .cov-chip span{font-size:10.5px;color:var(--text-3);font-weight:600}
+
+  /* BIG TABLE */
+  .table-wrap{flex:1;overflow:auto;border:1px solid var(--border);border-radius:12px;background:var(--surface);margin-bottom:6px;position:relative}
+  .table-wrap::-webkit-scrollbar{width:10px;height:10px}
+  .table-wrap::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:5px}
+  .table-wrap::-webkit-scrollbar-corner{background:transparent}
+
+  .mega-table{width:100%;border-collapse:separate;border-spacing:0;font-size:10.5px;min-width:1500px}
+  .mega-table thead th{position:sticky;top:0;background:#0f1626;color:var(--gold);font-weight:800;font-size:10px;letter-spacing:.3px;padding:10px 8px;text-align:right;border-bottom:2px solid rgba(212,166,86,.35);z-index:3;white-space:nowrap;vertical-align:middle}
+  .mega-table thead th:first-child{position:sticky;right:0;z-index:4;background:#0f1626;text-align:center}
+  .mega-table td{padding:8px;border-bottom:1px solid var(--border);color:var(--text-2);vertical-align:top;line-height:1.35}
+  .mega-table tr:last-child td{border-bottom:none}
+  .mega-table tr:hover td{background:rgba(255,255,255,.025)}
+  .mega-table tr:hover td:first-child{background:#121a2c}
+
+  .col-num{position:sticky;right:0;background:#0f1626;font-weight:800;color:var(--gold);text-align:center;z-index:2;min-width:34px;font-size:11px;border-left:1px solid var(--border)}
+  .col-name{font-weight:800;color:var(--text);font-size:11px;white-space:nowrap;min-width:130px}
+  .col-link{font-size:9.5px;min-width:52px}
+  .col-link a{color:var(--blue);text-decoration:none;font-weight:600;display:inline-block;padding:3px 6px;background:var(--blue-bg);border-radius:4px;font-size:9px}
+  .col-audience{font-size:9.5px;color:var(--gold);min-width:140px;max-width:180px;line-height:1.35;font-weight:600}
+  .col-edge{font-size:9.5px;color:var(--green);min-width:140px;max-width:180px;line-height:1.35;font-weight:600}
+  .col-features{font-size:9.5px;color:var(--text-2);min-width:320px;max-width:400px;line-height:1.4}
+  .col-features span{display:block;margin-bottom:2px}
+  .col-price{font-weight:800;color:var(--gold);white-space:nowrap;font-variant-numeric:tabular-nums;min-width:80px;font-size:10px}
+  .col-notes{font-size:9px;color:var(--text-3);min-width:110px;max-width:140px;line-height:1.3;font-style:italic}
+  .col-source{font-size:8.5px;min-width:60px;max-width:100px}
+  .col-source a{color:var(--cyan);text-decoration:none;word-break:break-all;font-size:8px;opacity:.8}
+  .col-source a:hover{opacity:1;text-decoration:underline}
+
+  .row-ours td{background:rgba(74,222,128,.06)!important;border-bottom:2px solid rgba(74,222,128,.25)!important}
+  .row-ours td.col-num{background:rgba(74,222,128,.08)!important;color:var(--green)!important}
+  .row-ours td.col-name{color:var(--green)!important;font-size:12px!important}
+  .row-ours td.col-edge{color:var(--green)!important}
+
+  .row-historic td{opacity:.55}
+  .row-historic td.col-num{color:var(--red)!important}
+
+  /* SEARCH */
+  .search-bar{margin-bottom:8px;position:relative;flex-shrink:0}
+  .search-bar input{width:100%;padding:10px 18px 10px 44px;background:var(--surface);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:13px;font-family:inherit;outline:none;transition:border-color .2s}
+  .search-bar input::placeholder{color:var(--text-3)}
+  .search-bar input:focus{border-color:var(--gold)}
+  .search-bar .search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--text-3);pointer-events:none}
+
+  /* PREVIOUS SLIDES STYLES */
+  .mega-table2{width:100%;border-collapse:separate;border-spacing:0;font-size:10.5px;min-width:1500px}
+  .mega-table2 thead th{position:sticky;top:0;background:#0f1626;color:var(--gold);font-weight:800;font-size:10px;letter-spacing:.3px;padding:10px 8px;text-align:right;border-bottom:2px solid rgba(212,166,86,.35);z-index:3;white-space:nowrap;vertical-align:middle}
+  .mega-table2 thead th:first-child{position:sticky;right:0;z-index:4;background:#0f1626}
+  .mega-table2 td{padding:8px;border-bottom:1px solid var(--border);color:var(--text-2);vertical-align:middle;line-height:1.35}
+  .mega-table2 tr:hover td{background:rgba(255,255,255,.025)}
+  .cat-row td{background:rgba(212,166,86,.08)!important;color:var(--gold)!important;font-weight:800;font-size:10px;letter-spacing:.5px;padding:7px 8px!important;border-bottom:1px solid rgba(212,166,86,.2)!important}
+  .cat-row td:first-child{position:sticky;right:0;z-index:2;background:rgba(212,166,86,.08)!important}
+  .col-name2{position:sticky;right:0;background:#0f1626;font-weight:700;color:var(--text);font-size:11px;white-space:nowrap;z-index:2;min-width:150px;border-left:1px solid var(--border)}
+  .col-origin{font-size:9.5px;color:var(--text-3);white-space:nowrap;min-width:60px}
+  .col-feature2{font-size:9.5px;color:var(--text-2);min-width:180px;max-width:220px;line-height:1.3}
+  .col-edge2{font-size:9.5px;color:var(--gold);min-width:140px;max-width:180px;line-height:1.3;font-weight:600}
+  .col-price2{font-weight:800;color:var(--gold);white-space:nowrap;font-variant-numeric:tabular-nums;min-width:80px;font-size:10.5px}
+  .col-model{white-space:nowrap;min-width:70px}
+  .chk{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:4px;font-size:10px;font-weight:800;line-height:1}
+  .chk.y{background:var(--green-bg);color:var(--green)}
+  .chk.n{background:rgba(255,255,255,.04);color:var(--text-3)}
+  .chk.p{background:var(--gold-bg);color:var(--gold)}
+  .model-tag{font-size:8.5px;font-weight:800;padding:2px 7px;border-radius:100px;white-space:nowrap;display:inline-block;letter-spacing:.2px}
+  .model-tag.sub{background:var(--blue-bg);color:var(--blue)}
+  .model-tag.free{background:var(--green-bg);color:var(--green)}
+  .model-tag.custom{background:var(--purple-bg);color:var(--purple)}
+  .model-tag.perp{background:var(--gold-bg);color:var(--gold)}
+  .model-tag.freemium{background:var(--cyan-bg);color:var(--cyan)}
+  .our-row td{background:rgba(74,222,128,.06)!important;border-bottom:2px solid rgba(74,222,128,.25)!important}
+  .our-row td:first-child{background:rgba(74,222,128,.08)!important;color:var(--green)!important;font-size:12px!important}
+  .our-row .col-feature2{color:var(--green)!important;font-weight:600;font-size:10px!important}
+
+  /* CARDS */
+  .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;flex:1;align-content:start;overflow-y:auto;padding-bottom:10px;padding-left:6px}
+  .cards-grid::-webkit-scrollbar{width:6px}
+  .cards-grid::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:3px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;transition:all .25s;display:flex;flex-direction:column;position:relative}
+  .card:hover{background:var(--surface-2);border-color:var(--border-strong);transform:translateY(-2px)}
+  .card.hidden{display:none}
+  .card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:6px;margin-bottom:6px}
+  .card-name{font-size:13px;font-weight:800;line-height:1.25;color:var(--text)}
+  .card-link{font-size:9px;color:var(--blue);text-decoration:none;white-space:nowrap;font-weight:600;padding:2px 7px;background:var(--blue-bg);border-radius:100px}
+  .card-audience{font-size:10px;color:var(--gold);font-weight:700;margin-bottom:6px;line-height:1.35;display:flex;gap:4px}
+  .card-audience::before{content:'◆';font-size:7px;margin-top:3px;flex-shrink:0}
+  .card-edge{font-size:10px;color:var(--green);font-weight:700;margin-bottom:8px;line-height:1.4;background:var(--green-bg);padding:5px 9px;border-radius:7px;border-right:2px solid var(--green)}
+  .card-features{display:flex;flex-direction:column;gap:3px;margin-bottom:8px;flex:1}
+  .card-feature{font-size:9.5px;color:var(--text-2);line-height:1.4;padding-right:10px;position:relative}
+  .card-feature::before{content:'';position:absolute;right:0;top:5px;width:3px;height:3px;border-radius:50%;background:var(--text-3)}
+  .card-price{display:flex;gap:5px;flex-wrap:wrap;padding-top:8px;border-top:1px solid var(--border);margin-top:auto}
+  .price-tag{font-size:9px;font-weight:700;padding:3px 8px;border-radius:100px;background:var(--gold-bg);color:var(--gold);border:1px solid rgba(212,166,86,.3);white-space:nowrap}
+  .price-tag.annual{background:var(--blue-bg);color:var(--blue);border-color:rgba(96,165,250,.3)}
+
+  /* STRATEGY */
+  .verdict-box{background:linear-gradient(135deg,rgba(212,166,86,.10),rgba(96,165,250,.05));border:1px solid rgba(212,166,86,.35);border-radius:16px;padding:20px 24px;margin-bottom:14px;position:relative;overflow:hidden}
+  .verdict-label{font-size:11px;font-weight:800;color:var(--gold);letter-spacing:1px;margin-bottom:8px}
+  .verdict-text{font-size:clamp(14px,1.4vw,17px);font-weight:700;line-height:1.55;position:relative;z-index:1}
+  .verdict-text .hl{color:var(--gold)}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+  .col-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 18px}
+  .col-card.good{border-color:rgba(74,222,128,.3)}
+  .col-card.bad{border-color:rgba(248,113,113,.3)}
+  .col-title{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;margin-bottom:10px}
+  .col-title .sq{width:7px;height:7px;border-radius:2px;flex-shrink:0}
+  .col-card.good .col-title{color:var(--green)}
+  .col-card.good .sq{background:var(--green)}
+  .col-card.bad .col-title{color:var(--red)}
+  .col-card.bad .sq{background:var(--red)}
+  .col-list{display:flex;flex-direction:column;gap:8px}
+  .col-item{font-size:12px;line-height:1.55;color:var(--text-2);padding-right:13px;position:relative}
+  .col-item::before{content:'';position:absolute;right:0;top:7px;width:4px;height:4px;border-radius:50%}
+  .col-card.good .col-item::before{background:var(--green)}
+  .col-card.bad .col-item::before{background:var(--red)}
+  .col-item strong{color:var(--text);font-weight:700}
+  .risk-box{background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.3);border-radius:12px;padding:14px 18px;margin-top:10px}
+  .risk-title{font-size:11.5px;font-weight:800;color:var(--red);margin-bottom:6px}
+  .risk-text{font-size:11.5px;line-height:1.6;color:var(--text-2)}
+
+  .rec-list{display:flex;flex-direction:column;gap:8px;flex:1;justify-content:center}
+  .rec-item{display:grid;grid-template-columns:44px 1fr auto;gap:14px;align-items:center;background:linear-gradient(90deg,rgba(212,166,86,.06),rgba(255,255,255,.025));border:1px solid rgba(212,166,86,.22);border-radius:13px;padding:13px 18px;transition:all .25s}
+  .rec-item:hover{border-color:rgba(212,166,86,.5)}
+  .rec-num{font-size:24px;font-weight:900;color:var(--gold);letter-spacing:-1.5px;line-height:1;font-variant-numeric:tabular-nums}
+  .rec-title{font-size:13px;font-weight:800;line-height:1.3;margin-bottom:3px;color:var(--text)}
+  .rec-desc{font-size:11px;line-height:1.5;color:var(--text-2)}
+  .rec-price{font-size:11px;font-weight:800;padding:5px 11px;border-radius:100px;background:var(--gold-bg);color:var(--gold);white-space:nowrap;border:1px solid rgba(212,166,86,.3);font-variant-numeric:tabular-nums}
+
+  .final-wrap{display:flex;flex-direction:column;flex:1;justify-content:center;gap:18px}
+  .final-hero{text-align:center;padding:30px 26px;background:linear-gradient(135deg,rgba(212,166,86,.10),rgba(96,165,250,.05));border:1px solid rgba(212,166,86,.3);border-radius:20px}
+  .final-hero h2{font-size:clamp(16px,1.9vw,22px);font-weight:800;line-height:1.5}
+  .final-hero h2 .hl{color:var(--gold)}
+  .final-points{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .fp{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;text-align:center}
+  .fp-num{font-size:26px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:8px;letter-spacing:-1.5px}
+  .fp-title{font-size:12px;font-weight:800;margin-bottom:4px}
+  .fp-desc{font-size:10.5px;color:var(--text-2);line-height:1.5}
+
+  .nav{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:4px;align-items:center;padding:6px 9px;background:rgba(10,15,30,.92);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:100px;z-index:100}
+  .nav-btn{width:32px;height:32px;border-radius:50%;border:none;background:transparent;color:var(--text-2);cursor:pointer;display:grid;place-items:center;transition:all .2s}
+  .nav-btn:hover:not(:disabled){background:var(--surface-2);color:var(--text)}
+  .nav-btn:disabled{opacity:.3;cursor:not-allowed}
+  .nav-counter{font-size:11px;color:var(--text-3);padding:0 8px;min-width:50px;text-align:center;font-variant-numeric:tabular-nums}
+  .nav-counter strong{color:var(--text);font-weight:800}
+  .dots{display:flex;gap:4px;padding:0 6px;align-items:center}
+  .dot{width:5px;height:5px;border-radius:50%;background:var(--border-strong);transition:all .3s;cursor:pointer}
+  .dot.active{background:var(--gold);width:16px;border-radius:3px}
+  .dot.done{background:var(--text-3)}
+  .progress{position:fixed;top:0;right:0;left:0;height:2px;z-index:101;background:rgba(255,255,255,.03)}
+  .progress-bar{height:100%;background:linear-gradient(to left,var(--gold),var(--blue));transition:width .4s;width:0}
+
+  .slide.active .an{animation:rise .4s ease backwards}
+  .slide.active .an:nth-child(1){animation-delay:.03s}
+  .slide.active .an:nth-child(2){animation-delay:.08s}
+  @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+  @media (max-width:1000px){
+    .slide{padding:16px 8px 72px}
+    .cover{padding:28px 18px}
+    .cards-grid{grid-template-columns:1fr}
+    .two-col,.final-points{grid-template-columns:1fr}
+    .rec-item{grid-template-columns:1fr;gap:8px}
+    .rec-price{justify-self:start}
+  }
+</style>
+</head>
+<body>
+
+<div class="deck">
+
+  <!-- ============ 1. COVER ============ -->
+  <section class="slide cover active">
+    <div class="cover-top an">
+      <div class="cover-brand">تقرير تحليلي داخلي — سري</div>
+      <div class="cover-date">17 أكتوبر 2026</div>
+    </div>
+    <div class="cover-body">
+      <h1 class="cover-title an">55 منصة</h1>
+      <p class="cover-sub an">مقارنة شاملة: الميزات، الأسعار، نماذج التسعير، التقرير التفصيلي الكامل، تحليل استراتيجية «مجاني سنة» وتوصية نهائية.</p>
+      <div class="cover-meta an">
+        <div class="cov-chip"><strong>55</strong><span>منصة</span></div>
+        <div class="cov-chip"><strong>10</strong><span>أعمدة تفصيلية</span></div>
+        <div class="cov-chip"><strong>2026</strong><span>أسعار محدّثة</span></div>
+        <div class="cov-chip"><strong>1</strong><span>توصية نهائية</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 2. MEGA TABLE (Features checkmarks) ============ -->
+  <section class="slide">
+    <div class="slide-head an">
+      <div class="eyebrow">01 — المقارنة السريعة</div>
+      <h2 class="title-lg">الميزات + الأسعار — 55 منصة في جدول واحد</h2>
+      <p class="sub">✓ = يدعم · ✗ = لا يدعم · ~ = جزئي/محدود. منصتنا في الأعلى. الأسعار بالدولار حيث أمكن (1 USD ≈ 3.75 SAR). «—» = غير معلن.</p>
+    </div>
+    <div class="table-wrap an">
+      <table class="mega-table2">
+        <thead>
+          <tr>
+            <th>المنصة</th><th>المنشأ</th><th>2D</th><th>3D</th><th>BOQ</th><th>إنشائي</th><th>MEP</th><th>الميزة الأساسية</th><th>نقاط التميز</th><th>الشهري</th><th>السنوي</th><th>النموذج</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="our-row"><td class="col-name2">مخطط المشاريع (منصتنا)</td><td class="col-origin">سعودي</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk p">~</span></td><td><span class="chk p">~</span></td><td class="col-feature2">منصة هندسية عربية ويب — 2D+3D+BOQ من نموذج واحد</td><td class="col-edge2">عربي من الأساس — تعديل واحد يُحدّث كل شيء</td><td class="col-price2">—</td><td class="col-price2">—</td><td class="col-model">—</td></tr>
+
+          <tr class="cat-row"><td colspan="12">BIM · CAD · نمذجة</td></tr>
+          <tr><td class="col-name2">Autodesk Revit</td><td class="col-origin">أمريكي</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td class="col-feature2">BIM متعدد التخصصات</td><td class="col-edge2">المعيار الصناعي لـBIM</td><td class="col-price2">$380</td><td class="col-price2">$3,005</td><td><span class="model-tag sub">اشتراك</span></td></tr>
+          <tr><td class="col-name2">Archicad</td><td class="col-origin">مجري</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk p">~</span></td><td><span class="chk p">~</span></td><td class="col-feature2">BIM معماري + رندر</td><td class="col-edge2">الأقوى معماريًا</td><td class="col-price2">$201</td><td class="col-price2">$2,414</td><td><span class="model-tag sub">اشتراك</span></td></tr>
+          <tr><td class="col-name2">AutoCAD Architecture</td><td class="col-origin">أمريكي</td><td><span class="chk y">✓</span></td><td><span class="chk p">~</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">رسم معماري DWG</td><td class="col-edge2">دقة الرسم الفني</td><td class="col-price2">$260</td><td class="col-price2">$2,095</td><td><span class="model-tag sub">اشتراك</span></td></tr>
+          <tr><td class="col-name2">SketchUp Pro</td><td class="col-origin">أمريكي</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">نمذجة 3D سهلة</td><td class="col-edge2">الأسهل والأرخص</td><td class="col-price2">$33.25</td><td class="col-price2">$399</td><td><span class="model-tag sub">اشتراك</span></td></tr>
+          <tr><td class="col-name2">BricsCAD BIM</td><td class="col-origin">بلجيكي</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk p">~</span></td><td><span class="chk p">~</span></td><td class="col-feature2">CAD+BIM على DWG</td><td class="col-edge2">توافق DWG+BIM</td><td class="col-price2">—</td><td class="col-price2">—</td><td><span class="model-tag sub">اشتراك</span></td></tr>
+          <tr><td class="col-name2">Vectorworks Architect</td><td class="col-origin">أمريكي</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk p">~</span></td><td><span class="chk n">✗</span></td><td><span class="chk p">~</span></td><td class="col-feature2">BIM مرن</td><td class="col-edge2">مرونة التصميم</td><td class="col-price2">$170</td><td class="col-price2">$1,530</td><td><span class="model-tag sub">اشتراك</span></td></tr>
+          <tr><td class="col-name2">ALLPLAN</td><td class="col-origin">ألماني</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk p">~</span></td><td><span class="chk y">✓</span></td><td><span class="chk p">~</span></td><td class="col-feature2">BIM+تفاصيل إنشائية</td><td class="col-edge2">عمق التفاصيل</td><td class="col-price2">$140</td><td class="col-price2">$1,680</td><td><span class="model-tag sub">اشتراك</span></td></tr>
+          <tr><td class="col-name2">Tekla Structures</td><td class="col-origin">فنلندي</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk p">~</span></td><td class="col-feature2">BIM إنشائي متخصص</td><td class="col-edge2">المرجع في التفاصيل</td><td class="col-price2">—</td><td class="col-price2">—</td><td><span class="model-tag custom">مخصص</span></td></tr>
+          <tr><td class="col-name2">Bentley OpenBuildings</td><td class="col-origin">أمريكي</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td class="col-feature2">BIM+تحليل طاقة</td><td class="col-edge2">عمق التحليل</td><td class="col-price2">$320.33</td><td class="col-price2">$3,844</td><td><span class="model-tag sub">اشتراك</span></td></tr>
+          <tr><td class="col-name2">FreeCAD BIM</td><td class="col-origin">مفتوح</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk p">~</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">CAD/BIM مفتوح المصدر</td><td class="col-edge2">مجاني بالكامل</td><td class="col-price2">$0</td><td class="col-price2">$0</td><td><span class="model-tag free">مجاني</span></td></tr>
+          <tr><td class="col-name2">Edificius</td><td class="col-origin">إيطالي</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk p">~</span></td><td><span class="chk p">~</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">BIM معماري+عرض</td><td class="col-edge2">توثيق+رندر</td><td class="col-price2">—</td><td class="col-price2">—</td><td><span class="model-tag custom">مخصص</span></td></tr>
+          <tr><td class="col-name2">Navisworks Manage</td><td class="col-origin">أمريكي</td><td><span class="chk n">✗</span></td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk y">✓</span></td><td class="col-feature2">فحص التصادم</td><td class="col-edge2">Clash Detection الأقوى</td><td class="col-price2">$355</td><td class="col-price2">$2,835</td><td><span class="model-tag sub">اشتراك</span></td></tr>
+          <tr><td class="col-name2">Solibri</td><td class="col-origin">فنلندي</td><td><span class="chk n">✗</span></td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk y">✓</span></td><td class="col-feature2">تحقق قائم على القواعد</td><td class="col-edge2">جودة النماذج</td><td class="col-price2">—</td><td class="col-price2">€99–€2,109</td><td><span class="model-tag sub">اشتراك</span></td></tr>
+          <tr><td class="col-name2">BIMcollab Zoom</td><td class="col-origin">هولندي</td><td><span class="chk n">✗</span></td><td><span class="chk y">✓</span></td><td><span class="chk p">~</span></td><td><span class="chk n">✗</span></td><td><span class="chk p">~</span></td><td class="col-feature2">فحص نماذج BIM</td><td class="col-edge2">ربط التعارضات</td><td class="col-price2">€105</td><td class="col-price2">€720</td><td><span class="model-tag sub">اشتراك</span></td></tr>
+          <tr><td class="col-name2">MagiCAD</td><td class="col-origin">فنلندي</td><td><span class="chk n">✗</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td><span class="chk y">✓</span></td><td class="col-feature2">تصميم MEP متخصص</td><td class="col-edge2">حسابات MEP عميقة</td><td class="col-price2">—</td><td class="col-price2">—</td><td><span class="model-tag custom">مخصص</span></td></tr>
+
+          <tr class="cat-row"><td colspan="12">تصميم داخلي · تأثيث · رندر</td></tr>
+          <tr><td class="col-name2">Coohom</td><td class="col-origin">صيني</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">تصميم داخلي+رندر</td><td class="col-edge2">الأقوى صينيًا</td><td class="col-price2">$9.90–$58</td><td class="col-price2">$99–$696</td><td><span class="model-tag freemium">Freemium</span></td></tr>
+          <tr><td class="col-name2">Homestyler</td><td class="col-origin">صيني</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">تصميم داخلي+AI</td><td class="col-edge2">أرخص فئة</td><td class="col-price2">$6.8–$19.6</td><td class="col-price2">~$81.6</td><td><span class="model-tag freemium">Freemium</span></td></tr>
+          <tr><td class="col-name2">Planner 5D</td><td class="col-origin">لاتفي</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">تخطيط+AI</td><td class="col-edge2">سهولة+AI Studio</td><td class="col-price2">$19.99–$49.99</td><td class="col-price2">$59.99–$399.99</td><td><span class="model-tag freemium">Freemium</span></td></tr>
+          <tr><td class="col-name2">Floorplanner</td><td class="col-origin">هولندي</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">مخططات سريعة</td><td class="col-edge2">الأرخص</td><td class="col-price2">$5–$29</td><td class="col-price2">$60–$300</td><td><span class="model-tag freemium">Freemium</span></td></tr>
+          <tr><td class="col-name2">RoomSketcher</td><td class="col-origin">نرويجي</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">مخططات 2D/3D</td><td class="col-edge2">جولات 360°</td><td class="col-price2">$24–$70</td><td class="col-price2">$144–$420</td><td><span class="model-tag freemium">Freemium</span></td></tr>
+          <tr><td class="col-name2">Cedreo</td><td class="col-origin">فرنسي</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">تصميم منازل</td><td class="col-edge2">تصدير DXF/PDF</td><td class="col-price2">—</td><td class="col-price2">—</td><td><span class="model-tag freemium">Freemium</span></td></tr>
+          <tr><td class="col-name2">HomeByMe</td><td class="col-origin">فرنسي</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">تصميم+أثاث</td><td class="col-edge2">ربط متاجر أثاث</td><td class="col-price2">—</td><td class="col-price2">—</td><td><span class="model-tag freemium">Freemium</span></td></tr>
+          <tr><td class="col-name2">Chief Architect</td><td class="col-origin">أمريكي</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk p">~</span></td><td><span class="chk p">~</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">تصميم سكني</td><td class="col-edge2">قوائم مواد</td><td class="col-price2">$229</td><td class="col-price2">$1,995</td><td><span class="model-tag sub">اشتراك</span></td></tr>
+          <tr><td class="col-name2">Sweet Home 3D</td><td class="col-origin">فرنسي</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">تصميم منازل</td><td class="col-edge2">مجاني</td><td class="col-price2">$0</td><td class="col-price2">$0</td><td><span class="model-tag free">مجاني</span></td></tr>
+          <tr><td class="col-name2">Live Home 3D</td><td class="col-origin">أوكراني</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">تصميم منازل</td><td class="col-edge2">ترخيص دائم</td><td class="col-price2">$5.99–$14.99</td><td class="col-price2">$19.99–$39.99</td><td><span class="model-tag perp">دائم</span></td></tr>
+          <tr><td class="col-name2">magicplan</td><td class="col-origin">سويدي</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk p">~</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">مسح بالجوال</td><td class="col-edge2">LiDAR+تقدير</td><td class="col-price2">—</td><td class="col-price2">—</td><td><span class="model-tag freemium">Freemium</span></td></tr>
+          <tr><td class="col-name2">Space Designer 3D</td><td class="col-origin">أمريكي</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">تصميم ويب</td><td class="col-edge2">سهولة بدون CAD</td><td class="col-price2">$25–$45</td><td class="col-price2">$249–$449</td><td><span class="model-tag sub">اشتراك</span></td></tr>
+          <tr><td class="col-name2">Roomle</td><td class="col-origin">نمساوي</td><td><span class="chk n">✗</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">تكوين منتجات 3D</td><td class="col-edge2">AR للتجارة</td><td class="col-price2">€170+</td><td class="col-price2">€1,680+</td><td><span class="model-tag custom">B2B</span></td></tr>
+
+          <tr class="cat-row"><td colspan="12">حصر كميات · تقدير · تسعير</td></tr>
+          <tr><td class="col-name2">Autodesk Forma Site</td><td class="col-origin">أمريكي</td><td><span class="chk p">~</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">تحليل موقع مبكر</td><td class="col-edge2">تحليل بيئي</td><td class="col-price2">—</td><td class="col-price2">—</td><td><span class="model-tag custom">مخصص</span></td></tr>
+          <tr><td class="col-name2">Autodesk Takeoff</td><td class="col-origin">أمريكي</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">حصر 2D/3D BIM</td><td class="col-edge2">ربط مع BIM</td><td class="col-price2">—</td><td class="col-price2">—</td><td><span class="model-tag custom">مخصص</span></td></tr>
+          <tr><td class="col-name2">Bluebeam Revu</td><td class="col-origin">أمريكي</td><td><span class="chk y">✓</span></td><td><span class="chk p">~</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">مراجعة PDF+قياس</td><td class="col-edge2">قياس دقيق PDF</td><td class="col-price2">—</td><td class="col-price2">$260–$590</td><td><span class="model-tag sub">اشتراك</span></td></tr>
+          <tr><td class="col-name2">PlanSwift</td><td class="col-origin">أمريكي</td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">حصر+تقدير+AI</td><td class="col-edge2">43,000+ محترف</td><td class="col-price2">—</td><td class="col-price2">$2,000–$3,000</td><td><span class="model-tag sub">اشتراك</span></td></tr>
+          <tr><td class="col-name2">STACK Takeoff</td><td class="col-origin">أمريكي</td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">حصر سحابي</td><td class="col-edge2">تعاون سحابي</td><td class="col-price2">$249–$299</td><td class="col-price2">$2,988–$3,588</td><td><span class="model-tag sub">اشتراك</span></td></tr>
+          <tr><td class="col-name2">Togal.AI</td><td class="col-origin">أمريكي</td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">حصر AI</td><td class="col-edge2">دقة 98% AI</td><td class="col-price2">$299</td><td class="col-price2">$3,588</td><td><span class="model-tag sub">اشتراك</span></td></tr>
+          <tr><td class="col-name2">RIB CostX</td><td class="col-origin">ألماني</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">حصر 2D/3D BIM</td><td class="col-edge2">مرجع QS</td><td class="col-price2">—</td><td class="col-price2">—</td><td><span class="model-tag custom">مخصص</span></td></tr>
+          <tr><td class="col-name2">eTakeoff Dimension</td><td class="col-origin">أمريكي</td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">حصر PDF/CAD</td><td class="col-edge2">تكامل Excel</td><td class="col-price2">—</td><td class="col-price2">$795–$1,495</td><td><span class="model-tag sub">اشتراك</span></td></tr>
+          <tr><td class="col-name2">MeasureSquare</td><td class="col-origin">أمريكي</td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">حصر أرضيات وبلاط</td><td class="col-edge2">تخطيط أنماط بلاط</td><td class="col-price2">$54</td><td class="col-price2">$540–$1,970</td><td><span class="model-tag sub">اشتراك</span></td></tr>
+          <tr><td class="col-name2">Buildxact</td><td class="col-origin">أسترالي</td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">حصر+تقدير+مشتريات</td><td class="col-edge2">تكامل كامل سكني</td><td class="col-price2">$169–$509</td><td class="col-price2">$2,030–$6,110</td><td><span class="model-tag sub">اشتراك</span></td></tr>
+          <tr><td class="col-name2">Groundplan</td><td class="col-origin">أسترالي</td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">حصر تخصصي</td><td class="col-edge2">رموز حسب التخصص</td><td class="col-price2">—</td><td class="col-price2">—</td><td><span class="model-tag custom">مخصص</span></td></tr>
+
+          <tr class="cat-row"><td colspan="12">إدارة مشاريع · محلية · نمذجة 3D</td></tr>
+          <tr><td class="col-name2">Procore</td><td class="col-origin">أمريكي</td><td><span class="chk p">~</span></td><td><span class="chk p">~</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">إدارة مشاريع متكاملة</td><td class="col-edge2">الأقوى في الإدارة</td><td class="col-price2">—</td><td class="col-price2">—</td><td><span class="model-tag custom">مؤسسي</span></td></tr>
+          <tr><td class="col-name2">Taqdir تقدير</td><td class="col-origin">سعودي</td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">حصر AI محلي</td><td class="col-edge2">توجه سعودي</td><td class="col-price2">—</td><td class="col-price2">—</td><td><span class="model-tag custom">تواصل</span></td></tr>
+          <tr><td class="col-name2">EtimadCo اعتمادكو</td><td class="col-origin">سعودي</td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">حصر+تسعير عربي</td><td class="col-edge2">BOQ محلي</td><td class="col-price2">—</td><td class="col-price2">—</td><td><span class="model-tag custom">تواصل</span></td></tr>
+          <tr><td class="col-name2">SmaartBuild</td><td class="col-origin">سعودي</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk p">~</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">تحليل مخططات+3D</td><td class="col-edge2">كود البناء السعودي</td><td class="col-price2">2,500 ر.س</td><td class="col-price2">22,500 ر.س</td><td><span class="model-tag sub">اشتراك</span></td></tr>
+          <tr><td class="col-name2">Rhino 3D</td><td class="col-origin">أمريكي</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">نمذجة NURBS</td><td class="col-edge2">أشكال معقدة</td><td class="col-price2">—</td><td class="col-price2">$995 (دائم)</td><td><span class="model-tag perp">دائم</span></td></tr>
+          <tr><td class="col-name2">Blender</td><td class="col-origin">مفتوح</td><td><span class="chk p">~</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">نمذجة+تحريك+رندر</td><td class="col-edge2">مجاني احترافي</td><td class="col-price2">$0</td><td class="col-price2">$0</td><td><span class="model-tag free">مجاني</span></td></tr>
+          <tr><td class="col-name2">3ds Max</td><td class="col-origin">أمريكي</td><td><span class="chk p">~</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">رندر معماري</td><td class="col-edge2">جودة سينمائية</td><td class="col-price2">$255</td><td class="col-price2">$2,010</td><td><span class="model-tag sub">اشتراك</span></td></tr>
+          <tr><td class="col-name2">Lumion</td><td class="col-origin">هولندي</td><td><span class="chk n">✗</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">رندر معماري سريع</td><td class="col-edge2">صور+فيديو واقعي</td><td class="col-price2">$96</td><td class="col-price2">$1,149</td><td><span class="model-tag sub">اشتراك</span></td></tr>
+          <tr><td class="col-name2">D5 Render</td><td class="col-origin">صيني</td><td><span class="chk n">✗</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">رندر فوري</td><td class="col-edge2">Ray Tracing+AI</td><td class="col-price2">—</td><td class="col-price2">~$360</td><td><span class="model-tag freemium">Freemium</span></td></tr>
+          <tr><td class="col-name2">Enscape</td><td class="col-origin">ألماني</td><td><span class="chk n">✗</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">رندر مباشر BIM</td><td class="col-edge2">تكامل Revit/SketchUp</td><td class="col-price2">$47.90</td><td class="col-price2">$574.80–$730.80</td><td><span class="model-tag sub">اشتراك</span></td></tr>
+          <tr><td class="col-name2">Twinmotion</td><td class="col-origin">فرنسي</td><td><span class="chk n">✗</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">رندر+VR</td><td class="col-edge2">مجاني تحت 1M$</td><td class="col-price2">—</td><td class="col-price2">$445</td><td><span class="model-tag freemium">Freemium</span></td></tr>
+
+          <tr class="cat-row"><td colspan="12">منتجات تاريخية / متوقفة</td></tr>
+          <tr><td class="col-name2">123D Design</td><td class="col-origin">أمريكي</td><td><span class="chk p">~</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">نمذجة 3D للمبتدئين</td><td class="col-edge2">— متوقف —</td><td class="col-price2">—</td><td class="col-price2">—</td><td><span class="model-tag custom">متوقف</span></td></tr>
+          <tr><td class="col-name2">123D Catch</td><td class="col-origin">أمريكي</td><td><span class="chk n">✗</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">تحويل صور إلى 3D</td><td class="col-edge2">— متوقف —</td><td class="col-price2">—</td><td class="col-price2">—</td><td><span class="model-tag custom">متوقف</span></td></tr>
+          <tr><td class="col-name2">Building Design Suite</td><td class="col-origin">أمريكي</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk p">~</span></td><td><span class="chk p">~</span></td><td><span class="chk p">~</span></td><td class="col-feature2">حزمة Autodesk</td><td class="col-edge2">— متقاعدة —</td><td class="col-price2">—</td><td class="col-price2">—</td><td><span class="model-tag custom">متقاعدة</span></td></tr>
+          <tr><td class="col-name2">Project Dragonfly</td><td class="col-origin">أمريكي</td><td><span class="chk y">✓</span></td><td><span class="chk y">✓</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td><span class="chk n">✗</span></td><td class="col-feature2">ويب تخطيط منازل</td><td class="col-edge2">أساس Homestyler</td><td class="col-price2">—</td><td class="col-price2">—</td><td><span class="model-tag custom">تاريخي</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ 3. FULL DETAILED EXCEL REPORT ============ -->
+  <section class="slide">
+    <div class="slide-head an">
+      <div class="eyebrow">02 — التقرير التفصيلي الكامل</div>
+      <h2 class="title-lg">55 منصة — التقرير الشامل</h2>
+      <p class="sub">كل منصة ببياناتها الكاملة: الرابط، الجمهور، أقوى ميزة، المميزات التفصيلية، السعر الشهري والسنوي، ملاحظات التسعير، والمصدر. استخدم البحث للوصول السريع.</p>
+    </div>
+    <div class="search-bar an">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="searchInput" placeholder="ابحث عن منصة بالاسم (مثال: Revit، PlanSwift، Coohom...)">
+    </div>
+    <div class="table-wrap an" id="detailTableWrap">
+      <table class="mega-table">
+        <thead>
+          <tr>
+            <th>م</th><th>اسم البرنامج / الموقع</th><th>الرابط</th><th>موجّه لمن</th><th>أقوى ميزة</th><th>المميزات الأساسية بالتفصيل</th><th>الشهري</th><th>السنوي</th><th>ملاحظات التسعير</th><th>المصدر</th>
+          </tr>
+        </thead>
+        <tbody id="detailBody">
+          <!-- Filled by JS -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ 4. STRATEGY ============ -->
+  <section class="slide">
+    <div class="slide-head an">
+      <div class="eyebrow">03 — تحليل الاستراتيجية</div>
+      <h2 class="title-lg">خطة «مجاني سنة ← ثم اشتراك»</h2>
+      <p class="sub">فكرة جذابة — لكن الأدلة من 55 منصة تُظهر تحذيرين حقيقيين. لنقرأها بصراحة.</p>
+    </div>
+    <div class="verdict-box an">
+      <div class="verdict-label">الحكم المبدئي</div>
+      <p class="verdict-text">الاستراتيجية <span class="hl">صحيحة في الجوهر</span> — لكن <span class="hl">خطيرة إذا نُفّذت كـ«مجاني كامل بلا قيود»</span>. الفرق بين «Free Trial» و«Free Year» هو الفرق بين بناء قاعدة مستخدمين وبناء قاعدة «مستخدمين مجانيين لا يتحولون».</p>
+    </div>
+    <div class="two-col an">
+      <div class="col-card good">
+        <div class="col-title"><span class="sq"></span>لماذا قد تنجح؟</div>
+        <div class="col-list">
+          <div class="col-item"><strong>تُزيل حاجز التجربة:</strong> المهندس العربي يخشى الاشتراك قبل التأكد — سنة مجانية تُزيل الخوف.</div>
+          <div class="col-item"><strong>تبني عادة استخدام:</strong> من يستخدم المنصة 12 شهراً يصعب عليه الانتقال.</div>
+          <div class="col-item"><strong>تخلق بيانات:</strong> 12 شهراً من الاستخدام الحقيقي = بيانات دقة، أخطاء، احتياجات.</div>
+          <div class="col-item"><strong>تسبق المنافسة:</strong> المنصات العالمية لا تقدم سنة مجانية.</div>
+        </div>
+      </div>
+      <div class="col-card bad">
+        <div class="col-title"><span class="sq"></span>لماذا قد تفشل؟</div>
+        <div class="col-list">
+          <div class="col-item"><strong>تكلفة استضافة بلا إيراد:</strong> 12 شهراً من الخوادم والدعم بلا ريال.</div>
+          <div class="col-item"><strong>«مستخدم مجاني» ≠ «مستخدم منتج»:</strong> Freemium يحوّل 2.6% فقط من العضويين إلى مدفوعين.</div>
+          <div class="col-item"><strong>تخسر فرصة اختبار التسعير:</strong> 9 أشهر من تجارب التسعير الحقيقية.</div>
+          <div class="col-item"><strong>تخلق توقعات:</strong> من اعتاد المجاني قد يرفض الدفع لاحقاً.</div>
+        </div>
+      </div>
+    </div>
+    <div class="risk-box an">
+      <div class="risk-title">⚠️ التحذير الحاسم — من تجربة SubBase</div>
+      <div class="risk-text">شركة SubBase قدمت منصتها <strong style="color:var(--text);">مجاناً لسنة كاملة</strong> — وخسرت ما لا يقل عن <strong style="color:var(--red);">$100,000 من الإيرادات السنوية المتكررة (ARR)</strong> كان يمكن تحصيلها لو بدأت التسعير من الشهر الأول. والأخطر: <strong style="color:var(--text);">خسرت 9 أشهر من تجارب التسعير</strong>. الدرس: «المجاني» ليس استراتيجية — بل تأخير للاستراتيجية.</div>
+    </div>
+  </section>
+
+  <!-- ============ 5. RECOMMENDATION ============ -->
+  <section class="slide">
+    <div class="slide-head an">
+      <div class="eyebrow">04 — التوصية النهائية</div>
+      <h2 class="title-lg">النموذج المُعدَّل — «مجاني بذكاء» لا «مجاني بلا قيود»</h2>
+      <p class="sub">بناءً على تحليل 55 منصة + الأدبيات — هذا هو النموذج الذي يحقق هدف «الشهرة أولاً» دون خسارة الإيراد أو تعطيل التعلم.</p>
+    </div>
+    <div class="rec-list an">
+      <div class="rec-item">
+        <div class="rec-num">01</div>
+        <div><div class="rec-title">سنة أولى — مجاني بحدود واضحة</div><div class="rec-desc">مشروعان نشطان · تصدير بعلامة مائية · 3 رندرات شهرياً · دعم بريد. تجربة حقيقية كافية للاعتياد — غير كافية للاستغناء عن الاشتراك.</div></div>
+        <div class="rec-price">0 ر.س</div>
+      </div>
+      <div class="rec-item">
+        <div class="rec-num">02</div>
+        <div><div class="rec-title">بعد السنة — 3 باقات</div><div class="rec-desc">احترافي ~99 ر.س/شهر · فِرَق ~299 ر.س/مقعد/شهر · مؤسسات مخصص. أقل من SketchUp Pro ($399 ≈ 1,500 ر.س) — «الأرخص احترافياً».</div></div>
+        <div class="rec-price">~1,200–7,200 ر.س/سنة</div>
+      </div>
+      <div class="rec-item">
+        <div class="rec-num">03</div>
+        <div><div class="rec-title">بوابة المالك — مجانية دائماً</div><div class="rec-desc">المالك يرى ويوافق ويختار التشطيبات. هذه «الترويج المجاني» الذي يجلب المقاولين. لا تُسعّرها أبداً.</div></div>
+        <div class="rec-price">0 ر.س</div>
+      </div>
+      <div class="rec-item">
+        <div class="rec-num">04</div>
+        <div><div class="rec-title">العميل الحكومي — عقد سنوي</div><div class="rec-desc">عقد سنوي بفاتورة واحدة ~2,500–5,000 ر.س/سنة/مستخدم — مع خصم للكميات.</div></div>
+        <div class="rec-price">مخصص</div>
+      </div>
+      <div class="rec-item">
+        <div class="rec-num">05</div>
+        <div><div class="rec-title">تسعير على «المشروع» لا «المقعد» للمالك</div><div class="rec-desc">نموذج مزدوج: المهندس على المقعد — المالك على المشروع (49 ر.س/مشروع للتصدير الكامل). لا يفعله أحد.</div></div>
+        <div class="rec-price">49 ر.س/مشروع</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. CONCLUSION ============ -->
+  <section class="slide">
+    <div class="final-wrap">
+      <div class="final-hero an">
+        <h2>«مجاني سنة» ليس استراتيجية تسعير — بل <span class="hl">تأخير للاستراتيجية</span>. الأفضل: <span class="hl">مجاني بحدود واضحة</span> + تسعير من الشهر الثالث + بوابة مالك مجانية.</h2>
+      </div>
+      <div class="final-points an">
+        <div class="fp"><div class="fp-num">01</div><div class="fp-title">لا تُسعّر «بلا حدود»</div><div class="fp-desc">المجاني بلا قيود يُنتج مستخدمين لا يتحولون. المجاني بحدود يُنتج مشترين.</div></div>
+        <div class="fp"><div class="fp-num">02</div><div class="fp-title">سعّر من الشهر الثالث</div><div class="fp-desc">لا تنتظر 12 شهراً. تعلّم من السوق قبل أن يسبقك منافس.</div></div>
+        <div class="fp"><div class="fp-num">03</div><div class="fp-title">بوابة المالك — مجانية</div><div class="fp-desc">المالك يجلب المقاول، والمقاول يدفع. لا تُسعّرها.</div></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+<div class="nav">
+  <button class="nav-btn" id="prevBtn" aria-label="السابق"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <div class="dots" id="dots"></div>
+  <div class="nav-counter"><strong id="curNum">1</strong> / <span id="totalNum">6</span></div>
+  <button class="nav-btn" id="nextBtn" aria-label="التالي"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</div>
+
+<script>
+// ============ 55 PLATFORMS DATA (from Excel) ============
+const platforms = [
+  { num:1, name:"منصتنا — مخطط المشاريع", url:"https://al-kefayah.com/plan", audience:"المهندسون المعماريون والإنشائيون ومهندسو MEP والمقاولون؛ وبالتوسع الملاك ومديرو المشاريع.", edge:"ربط مخطط 2D والمجسم 3D وعناصر المبنى وجداول الكميات ضمن محرر عربي في المتصفح.", features:["رسم الجدران والغرف والأبواب والنوافذ والسلالم والأدوار والمناسيب.","عناصر إنشائية: أعمدة وجسور وبلاطات وقواعد وأنواع متعددة من السلالم.","عناصر كهرباء وسباكة وتكييف ومسارات وأنظمة 3D.","مكتبات بلوكبريلاؤت وأثاث وتشطيبات وأرضيات وأسقف.","مراجعة 2D/3D، مقاطع وواجهات، قياسات وطبقات.","تقارير الغرف والكميات والتشطيبات وBOQ وتصدير Excel/CSV بحسب الوصف.","أدوات فحص هندسي وتصادم وتعليقات وملاحظات."], monthly:"", annual:"", notes:"السعر متروك فارغًا بناءً على طلبك. المزايا مبنية على وصفك؛ لم تُختبر كل وظيفة بصورة مستقلة.", source:"https://al-kefayah.com/plan", ours:true },
+
+  { num:2, name:"Autodesk Revit", url:"https://www.autodesk.com/products/revit/overview", audience:"المكاتب الهندسية متعددة التخصصات: معماريون وإنشائيون ومهندسو كهرباء وميكانيكا؛ مشاريع BIM.", edge:"نموذج BIM بارامتري يربط عناصر المبنى بالرسومات والجداول والبيانات متعددة التخصصات.", features:["نمذجة BIM معمارية وإنشائية وMEP.","عائلات وعناصر بخصائص وعلاقات.","مخططات وواجهات وقطاعات وتفاصيل تنفيذية.","جداول كميات ومواد وعناصر وتصدير بيانات.","تنسيق متعدد التخصصات وتبادل IFC وصيغ CAD.","أدوات مراجعة وتكامل مع منظومة Autodesk."], monthly:"380 USD/شهر (دفع شهري)؛ 251 USD/شهر مكافئًا في السنوي", annual:"3,005 USD/سنة", notes:"السعر الأمريكي الرسمي المرصود؛ قبل الضرائب وقد يختلف إقليميًا.", source:"https://www.autodesk.com/products/revit/subscribe" },
+
+  { num:3, name:"Graphisoft Archicad", url:"https://graphisoft.com/solutions/archicad", audience:"المعماريون ومكاتب التصميم والتوثيق المعماري وفرق BIM.", edge:"التوثيق المعماري والجداول التفاعلية المرتبطة بعناصر نموذج BIM.", features:["نموذج BIM معماري مترابط.","المساقط والواجهات والقطاعات والتفاصيل.","جداول تفاعلية للعناصر والمواد والتشطيبات.","إدارة تخطيطات اللوحات والإصدارات.","تبادل IFC والتعاون مع تخصصات أخرى.","تكاملات MEP وخيارات تعاون حسب الخطة."], monthly:"Studio: 201 USD؛ Collaborate: 237 USD؛ Max: 475 USD", annual:"Studio: 2,414 USD؛ Collaborate: 2,840 USD؛ Max: 5,700 USD", notes:"أسعار أمريكية قبل الضريبة، مع دفع سنة مقدمًا.", source:"https://www.graphisoft.com/en-us/pricing/" },
+
+  { num:4, name:"AutoCAD Architecture", url:"https://www.autodesk.com/products/autocad/included-toolsets/autocad-architecture", audience:"رسامون معماريون ومكاتب تحتاج إلى إنتاج لوحات CAD وعناصر معمارية متخصصة.", edge:"بيئة DWG مع عناصر الجدران والأبواب والنوافذ وأدوات التوثيق المعماري.", features:["رسم 2D وأدوات نمذجة/عرض مساندة.","جدران وأبواب ونوافذ وعناصر معمارية ذكية.","لوحات ومساقط وواجهات وقطاعات.","استخراج بيانات العناصر وجداولها.","توافق واسع مع DWG وأدوات CAD.","مجموعة Architecture ضمن اشتراك AutoCAD عادةً."], monthly:"260 USD/شهر لاشتراك AutoCAD", annual:"2,095 USD/سنة", notes:"السعر للمنتج الأساسي AutoCAD المتضمن مجموعة Architecture، وليس سعرًا مستقلًا للمجموعة.", source:"https://www.autodesk.com/solutions/autocad-subscription-faq" },
+
+  { num:5, name:"SketchUp", url:"https://sketchup.trimble.com/en/plans-and-pricing", audience:"مصممو العمارة والداخلية والمناظر الطبيعية الذين يحتاجون نمذجة 3D سريعة.", edge:"سهولة النمذجة الحرة وسرعتها ومكتبة 3D Warehouse وإضافات كثيرة.", features:["نمذجة ثلاثية الأبعاد مباشرة.","مكتبة نماذج ومواد جاهزة.","توثيق 2D عبر LayOut في Pro.","استيراد/تصدير CAD وتكامل IFC بحسب الخطة.","أدوات متقدمة في Studio لاستيراد Revit والتصور الواقعي.","منظومة إضافات لتوسيع الوظائف."], monthly:"Go: 10.75 USD؛ Pro: 33.25 USD؛ Studio: 71.58 USD", annual:"Go: 129 USD؛ Pro: 399 USD؛ Studio: ~859 USD", notes:"مكافئات اشتراك سنوي من صفحة الخطط؛ الضرائب والمنطقة قد تغيّرها.", source:"https://sketchup.trimble.com/en/plans-and-pricing" },
+
+  { num:6, name:"BricsCAD BIM", url:"https://www.bricsys.com/en-us/bricscad-bim", audience:"مكاتب CAD/BIM التي تريد الانتقال من الرسم DWG إلى تصنيف ونمذجة BIM.", edge:"الجمع بين سير عمل DWG وتصنيف عناصر المبنى وخصائص BIM.", features:["رسم CAD وتحرير DWG.","تصنيف جدران وأعمدة وبلاطات وأبواب ونوافذ ومساحات.","خصائص وعلاقات BIM ومعرفات للعناصر.","نمذجة 3D وتوثيق ورسومات.","تبادل BIM/CAD بحسب الخطة والصيغة.","خيارات ترخيص اشتراكي ودائم تختلف حسب السوق."], monthly:"غير مثبت بسعر عام موحد؛ يختلف حسب الرخصة والمنطقة.", annual:"عرض متجر/موزع؛ لا أعتمد رقمًا موحدًا", notes:"يلزم اختيار إصدار BricsCAD BIM ومراجعة المتجر أو الموزع المحلي.", source:"https://www.bricsys.com/en-us/bricscad-bim" },
+
+  { num:7, name:"Vectorworks Architect", url:"https://www.vectorworks.net/en-US/architect", audience:"المعماريون ومكاتب التصميم المعماري والموقع والتوثيق.", edge:"مرونة التصميم مع BIM والجداول والوثائق ضمن بيئة واحدة.", features:["أدوات CAD للرسم ثنائي الأبعاد.","نموذج BIM معماري ثلاثي الأبعاد.","جداول وبيانات عناصر.","واجهات وقطاعات وتفاصيل ولوحات.","أدوات تصميم موقع ومناظر طبيعية وتكاملات.","إمكانات التوثيق والتعاون بحسب الخطة."], monthly:"170 USD/شهر", annual:"1,530 USD/سنة (127.50 USD/شهر مكافئًا)", notes:"الأسعار الأمريكية المنشورة لخطة Architect؛ قبل الضرائب.", source:"https://www.vectorworks.net/en-US/architect/buy" },
+
+  { num:8, name:"ALLPLAN", url:"https://www.allplan.com/en-US/shop/products/allplan", audience:"المكاتب المعمارية والإنشائية ومهندسو الخرسانة والصلب والتفاصيل التنفيذية.", edge:"ربط BIM بالتصميم الإنشائي والتفاصيل والتصنيع ضمن مسار التصميم إلى البناء.", features:["رسم 2D ونمذجة 3D.","BIM معماري وإنشائي.","حصر كميات وتوثيق.","تفاصيل خرسانة وحديد وتسليح بحسب الخطة.","تنسيق وتعاون سحابي وتبادل بيانات.","مستويات من Basic إلى Ultimate."], monthly:"Basic: 140 USD؛ Ultimate: 404 USD (بدفع سنوي مقدمًا)", annual:"Basic: 1,680؛ Concept: 2,892؛ Professional: 3,588؛ Ultimate: 4,848 USD/سنة", notes:"الأسعار الأمريكية قبل VAT؛ قيمة «الشهر» ضمن عقد سنوي.", source:"https://www.allplan.com/en-US/shop/products/allplan" },
+
+  { num:9, name:"Tekla Structures", url:"https://www.tekla.com/products/tekla-structures/subscription", audience:"مهندسو الهياكل الخرسانية والمعدنية ومصممو التفاصيل ومقاولو التصنيع.", edge:"عمق التفاصيل الإنشائية ورسومات التصنيع والتقارير المرتبطة بالنموذج.", features:["نمذجة إنشائية ثلاثية الأبعاد.","تفاصيل الخرسانة والحديد والصلب.","رسومات تصنيع وتركيب.","تقارير واستخراج بيانات وكميات.","تنسيق النماذج والمراجع.","تخطيط وتسلسل ولوجستيات بحسب مستوى الاشتراك."], monthly:"عرض سعر من Trimble أو الموزع", annual:"عرض سعر من Trimble أو الموزع", notes:"الشركة لا تنشر سعرًا عامًا ثابتًا؛ المستويات تختلف في الوظائف.", source:"https://www.tekla.com/products/tekla-structures/subscription" },
+
+  { num:10, name:"Bentley OpenBuildings Designer", url:"https://www.bentley.com/products/openbuildings-designer/", audience:"شركات هندسية ومشاريع مبانٍ معقدة متعددة التخصصات والطاقة وMEP.", edge:"BIM متعدد التخصصات مع المحاكاة والتحليل وتبادل OpenBIM.", features:["نمذجة معمارية وإنشائية وMEP.","أنظمة HVAC والأنابيب ومكونات الخدمات.","توثيق ورسومات ونماذج منسقة.","محاكاة وتحليل طاقة وأداء.","تبادل IFC وRFA وDWG وفق الاستخدام.","سير عمل مؤسسي متعدد التخصصات."], monthly:"320.33 USD/شهر مكافئًا ضمن اشتراك 12 شهرًا", annual:"3,844 USD/سنة", notes:"السعر الرسمي يبدأ من اشتراك 12 شهرًا؛ ليس اشتراكًا شهريًا مرنًا.", source:"https://www.bentley.com/products/openbuildings-designer/" },
+
+  { num:11, name:"FreeCAD BIM Workbench", url:"https://www.freecad.org/", audience:"المستخدمون والمكاتب التي تريد CAD/BIM مفتوح المصدر وقابلًا للتخصيص.", edge:"مجاني ومفتوح المصدر مع نمذجة بارامترية وقابلية تطوير.", features:["نمذجة CAD ثلاثية الأبعاد.","أدوات BIM وعناصر الجدران والأعمدة والنوافذ والأسقف.","إمكانات رسم 2D من النموذج.","تبادل IFC وأدوات برمجية مفتوحة.","تخصيص عبر الإضافات والبرمجة.","لا توجد منظومة دعم تجاري موحدة كالحلول المغلقة."], monthly:"مجاني", annual:"مجاني", notes:"مفتوح المصدر؛ قد تكون هناك تكاليف لخدمات خارجية اختيارية.", source:"https://www.freecad.org/" },
+
+  { num:12, name:"Edificius", url:"https://www.accasoftware.com/en/3d-building-design-software", audience:"المكاتب المعمارية التي تحتاج BIM وتصميم مبانٍ وعرضًا بصريًا ووثائق.", edge:"الجمع بين النموذج المعماري والتوثيق والعرض ضمن برنامج واحد.", features:["نموذج معماري ثلاثي الأبعاد.","إنتاج مخططات وواجهات وقطاعات.","مكتبات عناصر ومواد.","عرض وتصوير معماري.","تكاملات مع أدوات ACCA للحصر والجدولة بحسب المنتج.","نطاق المزايا والسعر حسب الإصدار."], monthly:"حسب الخطة؛ لا يوجد سعر شهري موحد مؤكد.", annual:"حسب الإصدار والعرض التجاري؛ يلزم التحقق", notes:"لا تُعتمد قيمة سعرية دون اختيار الإصدار والمنطقة من الشركة.", source:"https://www.accasoftware.com/en/3d-building-design-software" },
+
+  { num:13, name:"Autodesk Navisworks Manage", url:"https://www.autodesk.com/products/navisworks/overview", audience:"مديرو BIM ومنسقو التخصصات ومهندسو التنسيق قبل التنفيذ.", edge:"كشف التصادمات وتجميع نماذج من برامج مختلفة ومراجعة التنسيق.", features:["تجميع نماذج متعددة التخصصات.","Clash Detective لاكتشاف التعارض.","مراجعة وقياس واستكشاف النموذج.","محاكاة 4D وربط النموذج بالجدول بحسب الإعداد.","تقارير التعارض ومراجعة العناصر.","ليس محررًا أساسيًا لبناء النموذج الأصلي."], monthly:"355 USD/شهر حسب السعر المرصود", annual:"2,835 USD/سنة حسب السعر المرصود", notes:"اشتراك متخصص؛ تختلف الأسعار حسب البلد والخطة.", source:"https://www.autodesk.com/products/navisworks/buy" },
+
+  { num:14, name:"Solibri", url:"https://www.solibri.com/our-offerings", audience:"فرق BIM وإدارة جودة النماذج والاستشاريون ومنسقو المشاريع.", edge:"التحقق القائم على القواعد وضبط جودة البيانات والتصادم.", features:["عرض وتجميع نماذج IFC.","فحص خصائص وتصنيفات العناصر.","كشف التصادم وتنسيق النماذج.","قواعد تحقق جاهزة ومخصصة حسب الخطة.","إدارة مشكلات BIM والتقارير.","وظائف QTO/ITO في مستويات أعلى."], monthly:"لا يوجد اشتراك شهري عام موحد مؤكد؛ تسعير سنوي.", annual:"Starter: 99 EUR؛ Essential: 1,428 EUR؛ Advanced: 2,109 EUR/سنة", notes:"الأسعار السنوية لكل رخصة؛ اختر العملة من الموقع.", source:"https://www.solibri.com/our-offerings" },
+
+  { num:15, name:"BIMcollab Zoom", url:"https://www.bimcollab.com/en/plans/bimcollab-modelchecking/", audience:"منسقو BIM وفرق التحقق من النماذج وإدارة التعارض.", edge:"فحص موديلات BIM وربط الملاحظات والتعارضات بسير عمل التعاون.", features:["تجميع نماذج IFC وRevit وفق الخطة.","كشف تصادم وفحص خصائص.","مراجعة النموذج وتحديد المشكلات.","ربط المشكلات بمنظومة التعاون.","تراخيص Single وFloating.","ليس محررًا رئيسيًا لتأليف جميع عناصر المبنى."], monthly:"Single: 105 EUR/شهر مرن أو 60 EUR/شهر مع التزام سنوي؛ Floating: 168 أو 96 EUR", annual:"Single: 720 EUR؛ Floating: 1,152 EUR/سنة عند الالتزام السنوي", notes:"السعر لكل مستخدم/رخصة، والعملات والضرائب تختلف.", source:"https://www.bimcollab.com/en/plans/bimcollab-modelchecking/" },
+
+  { num:16, name:"MagiCAD", url:"https://www.magicad.com/mep-design/", audience:"مهندسو الكهرباء والتهوية والتكييف والسباكة في المشاريع المتخصصة.", edge:"تفاصيل MEP ومكتبات المصنعين والحسابات الفنية المتخصصة.", features:["تصميم أنظمة HVAC والسباكة والكهرباء.","توجيه عناصر ومسارات MEP.","مكتبات BIM لمكونات المصنعين.","أدوات حساب ومحاكاة حسب النظام.","تكامل مع Revit وAutoCAD وBricsCAD بحسب الحل.","ليس محررًا معماريًا عامًا بمفرده."], monthly:"عرض سعر", annual:"عرض سعر", notes:"الترخيص حسب الوحدة والتخصص والبرنامج المضيف والمنطقة.", source:"https://www.magicad.com/mep-design/" },
+
+  { num:17, name:"Coohom", url:"https://www.coohom.com/us/pricing", audience:"مصممو الديكور الداخلي، معارض الأثاث، ومصممو المطابخ والغرف والمبيعات البصرية.", edge:"سرعة التأثيث والتصيير الواقعي ومكتبات الأثاث والخامات.", features:["تخطيط غرف وتصميم داخلي 2D/3D.","مكتبات أثاث ومواد وكتالوجات.","رندر صور واقعية ومشاركة التصاميم.","رسومات/قائمة مواد بحسب الخطة.","تعاون فريق ومشاركة مشاريع.","Enterprise يدعم تكاملات وأعمال تجارية مخصصة."], monthly:"تختلف قيمة Pro/Elite حسب المنطقة والباقات؛ تحقق من السعر الظاهر بعد اختيار السوق.", annual:"تختلف حسب خطة Coohom وبلد الفوترة؛ لا يوجد رقم موحد مثبت هنا", notes:"الموقع يعرض خطط Basic وPro وElite وEnterprise، وبعض التفاصيل تظهر حسب السوق والحساب.", source:"https://www.coohom.com/us/pricing" },
+
+  { num:18, name:"Homestyler", url:"https://www.homestyler.com/pricing?lang=ar_SA", audience:"مصممو الديكور الداخلي وأصحاب المنازل والمعارض والعلامات التجارية.", edge:"رندر سحابي عالي الدقة ومكتبات جاهزة مع أدوات AI للتصميم الداخلي.", features:["تصميم غرف ومنازل 2D/3D.","مكتبة أثاث ومواد وعناصر.","صور رندر 1K/2K/4K وبانوراما بحسب الخطة.","نمذجة داخلية وسلالم وأسقف وأرضيات.","تصدير مخطط ملون وقائمة مواد ورسومات بناء في الخطط المؤهلة.","Team وAPI للشركات حسب الخطة."], monthly:"Basic مجاني؛ Pro+ من 6.8 USD؛ Master+ من 11.8؛ Team من 19.6 USD/مقعد", annual:"Pro+ ~81.6 USD/سنة؛ Master+ من 141.6 عند احتساب ×12؛ تحقق من الفوترة", notes:"الأسعار تبدأ من وقد تتغير حسب المنطقة والرندر والرصيد.", source:"https://www.homestyler.com/pricing?lang=ar_SA" },
+
+  { num:19, name:"Planner 5D", url:"https://planner5d.com/pricing", audience:"أصحاب المنازل ومصممو الداخلية والمعماريون الذين يحتاجون تخطيطًا سريعًا وعرضًا بصريًا.", edge:"سهولة تحويل المخطط إلى مشروع 3D مع مكتبة أثاث وأدوات AI.", features:["إنشاء مشاريع 2D/3D ومشاركتها.","رفع مخطط وتحويله إلى مشروع 3D في Premium.","كتالوج أثاث وخامات موسع.","صور رندر قياسية و4K بحسب الخطة.","رفع نماذج 3D بصيغ متعددة في Professional.","360° walkthrough وpanorama وتصدير CAD وأداة تقدير أسعار في Professional."], monthly:"Premium: 19.99 USD؛ Professional: 49.99 USD", annual:"Premium: 59.99 USD؛ Professional: 399.99 USD", notes:"أسعار الموقع الأمريكي؛ قد تختلف العملة والضرائب والعروض.", source:"https://planner5d.com/pricing" },
+
+  { num:20, name:"Floorplanner", url:"https://floorplanner.com/pricing", audience:"وكلاء العقارات وأصحاب المنازل والمصممون ومقدمو المخططات السريعة.", edge:"محرر تخطيط من المتصفح مع رصيد حسب نوع وجودة المخرجات.", features:["إنشاء مخططات 2D و3D.","مكتبة أثاث وعناصر داخلية.","صور وتصديرات SD/HD/4K/8K باستخدام مستويات المشروع والأرصدة.","حتى 5 مشاريع مجانية أساسية.","شراء أرصدة لمخرجات إضافية وإزالة العلامة المائية.","خطط فريق بخصائص إضافية حسب الحساب."], monthly:"مجاني أساسي؛ 5 أرصدة إضافية = 8.15 USD. سعر الاشتراك يتغير حسب الحساب.", annual:"الأرصدة والاشتراك تختلف؛ لا يوجد سعر سنوي عام واحد ثابت", notes:"نظام Freemium وأرصدة للاستخدام والمخرجات؛ الأسعار قبل الضرائب.", source:"https://floorplanner.com/pricing" },
+
+  { num:21, name:"RoomSketcher", url:"https://www.roomsketcher.com/pricing/", audience:"قطاع العقارات، مصممو الداخل، وخدمات إعداد المخططات للمنازل والمباني.", edge:"إخراج مخططات احترافية قابلة للطباعة مع أثاث وصور 3D.", features:["مخططات 2D/3D وقياسات ومساحة كلية.","مكتبة أثاث.","صور 3D و360° بحسب الخطة.","طباعة بمقياس وتخصيص الهوية.","تعاون فريق وأرشيف أكبر في Team.","نظام أرصدة للمشاريع والمرئيات."], monthly:"Pro: 24 USD؛ Team: 70 USD", annual:"Pro: 144 USD؛ Team: 420 USD عند الفوترة السنوية", notes:"الأسعار USD دون ضريبة؛ توجد خطة مجانية وأرصدة محدودة.", source:"https://www.roomsketcher.com/pricing/" },
+
+  { num:22, name:"Cedreo", url:"https://cedreo.com/pricing/", audience:"مصممو المنازل وشركات البناء السكني ومحترفو بيع المنازل.", edge:"إعداد عروض منازل 2D/3D بسرعة من المتصفح مع تصدير مخططات.", features:["مخطط أرضي وتصميم منزلي 2D/3D.","تصميم داخلي وخارجي.","رندر وصور للعروض.","استيراد صورة/PDF/CAD مرجعي بحسب الصيغ المدعومة.","تصدير مخططات ووثائق بحسب الخطة.","حساب مجاني لمشروع واحد للتجربة."], monthly:"السعر حسب العرض/الخطة؛ غير ثابت ظاهر في الصفحة العامة.", annual:"عرض سعر أو مبلغ يظهر عند اختيار الباقة", notes:"تحقق من عدد المشاريع والمخرجات المسموح بها؛ سعر Enterprise مخصص.", source:"https://cedreo.com/pricing/" },
+
+  { num:23, name:"HomeByMe", url:"https://home.by.me/en/offers/", audience:"أصحاب المنازل ومصممو الديكور وماركات الأثاث وتجارة التجزئة.", edge:"ربط التصاميم بمكتبات المنتجات والأثاث ورندر واقعي.", features:["تصميم منزل 2D/3D.","كتالوج أثاث ومنتجات واسع.","لقطات 2D/3D ورندر واقعي.","استيراد نماذج 3D بباقات مؤهلة.","تصدير مخططات 2D وملفات DraftSight في الخطة المناسبة.","حلول Enterprise للعلامات التجارية والمصنعين."], monthly:"Starter مجاني؛ السعر المدفوع يظهر حسب العرض والحساب.", annual:"Essentials/Pro+ تختلف حسب العرض والمنطقة؛ غير معلن موحدًا", notes:"الخطة المجانية محدودة بمشروعين و5 صور Full HD وفق صفحة العروض؛ باقات الشركات بعرض مخصص.", source:"https://home.by.me/en/offers/" },
+
+  { num:24, name:"Chief Architect Premier", url:"https://www.chiefarchitect.com/products/home-design/premier/", audience:"مصممو المنازل والمقاولون السكنيون ومصممو المطابخ والحمامات والتجديد.", edge:"إنشاء النموذج تلقائيًا من عناصر المنزل وإخراج قوائم مواد ورسومات تنفيذ.", features:["جدران وأبواب ونوافذ ذكية.","توليد نموذج 3D من الرسم.","أدوات أسقف وإطارات وأساسات وسلالم.","Materials List وتكاليف مواد.","مخططات موقع وتأطير وواجهات وقطاعات.","مكتبات أثاث وخامات ودعم استيراد/تصدير."], monthly:"229 USD/شهر", annual:"1,995 USD/سنة", notes:"السعر الأمريكي المنشور لخطة Premier؛ منتجات Chief Architect الأخرى تختلف.", source:"https://www.chiefarchitect.com/products/home-design/premier/" },
+
+  { num:25, name:"Sweet Home 3D", url:"https://www.sweethome3d.com/", audience:"مستخدمون منزليون ومتعلمون ومصممو داخلية بمشاريع بسيطة.", edge:"رسم 2D ومعاينة 3D بطريقة مجانية وبسيطة.", features:["مخطط ثنائي الأبعاد مع أبعاد.","تأثيث وعناصر وخامات.","معاينة فورية ثلاثية الأبعاد.","استيراد مكتبات نماذج وأثاث.","تصدير صور وفيديو وصيغ 3D بحسب الإصدار.","نسخة مفتوحة المصدر وإصدارات تطبيقات مدفوعة حسب المتجر."], monthly:"مجاني للبرنامج الأساسي؛ بعض التطبيقات/المتاجر مدفوعة.", annual:"مجاني للبرنامج الأساسي", notes:"لا تخلط بين التطبيق الأساسي المجاني ومشتريات/إصدارات المتاجر.", source:"https://www.sweethome3d.com/" },
+
+  { num:26, name:"Live Home 3D", url:"https://www.livehome3d.com/store/", audience:"أصحاب المنازل ومصممو الداخل والخارج ومستخدمو أنظمة متعددة.", edge:"سهولة التصميم المنزلي مع مشاهد 3D وإضاءة وخامات ومخرجات مرئية.", features:["إنشاء مخططات 2D ومنازل متعددة الطوابق.","عرض 3D مع مواد وإضاءة.","مكتبة أثاث وعناصر.","مشاهد وصور وفيديو.","تصدير نماذج 3D وصيغ متعددة بحسب الإصدار.","رخص دائمة لبعض إصدارات سطح المكتب واشتراك على الجوال."], monthly:"Android: Standard 5.99 USD؛ Pro 14.99 USD", annual:"Android: Standard 19.99 USD؛ Pro 39.99 USD بالعرض المرصود", notes:"تختلف الرخصة حسب نظام التشغيل؛ توجد رخص دائمة في بعض المتاجر.", source:"https://www.livehome3d.com/store/" },
+
+  { num:27, name:"magicplan", url:"https://magicplan.app/pricing", audience:"فرق المعاينة والصيانة والتأمين والمقاولون ومهندسو الموقع والمسح الميداني.", edge:"إنشاء مخطط من الموقع عبر الهاتف مع تقارير وقياسات ومرفقات.", features:["التقاط مخططات وقياسات ميدانية.","إنشاء مخططات 2D/3D بحسب الوظائف.","صور وملاحظات وتقارير موقع.","أدوات تقدير تكلفة في باقات معينة.","تصدير PDF وDXF وIFC وCSV/XLS لبعض المخرجات.","إدارة مشاريع ومشاركة مع الفريق."], monthly:"يعتمد على عدد المشاريع/المستخدمين؛ لا يوجد سعر موحد مثبت هنا.", annual:"حسب الخطة والحصة؛ السعر يظهر بعد اختيار باقة الفوترة", notes:"تأكد من حصة المشاريع والتصدير؛ رسوم إضافية قد تطبق على الزيادة.", source:"https://magicplan.app/pricing" },
+
+  { num:28, name:"Space Designer 3D", url:"https://www.spacedesigner3d.com/pricing", audience:"مستخدمو تخطيط المساحات ومصممو الديكور والعقارات ممن يريدون محرر ويب.", edge:"مخططات 2D/3D عبر المتصفح مع تصميم داخلي دون برنامج CAD ثقيل.", features:["رسم غرف ومساقط.","تأثيث وعرض 3D.","رندر وصور تصدير.","خطط مدفوعة لحدود أعلى من المشاريع والمخرجات.","استيراد/تصدير لبعض صيغ النماذج حسب الخطة.","أدوات عرض لتقديم التصاميم."], monthly:"Premium ~25 USD؛ Ultimate ~45 USD", annual:"~249 USD لـPremium و449 USD لـUltimate في العرض المرصود", notes:"أسعار إرشادية من العرض المرصود؛ أكدها على صفحة الدفع.", source:"https://www.spacedesigner3d.com/pricing" },
+
+  { num:29, name:"Roomle", url:"https://www.roomle.com/pricing", audience:"مصنعو الأثاث ومتاجر التجزئة والعلامات التجارية التي تحتاج تكوين منتجات 3D وAR.", edge:"تكوين الأثاث والمنتجات وعرضها تفاعليًا ودمجها بالتجارة الإلكترونية.", features:["عارض وتكوين منتجات 3D.","تغيير الألوان والمواد والأبعاد المسموح بها.","عرض AR في الحلول المدعومة.","تكامل مع مواقع التجارة الإلكترونية.","إدارة كتالوجات المنتجات.","حلول API وEnterprise مخصصة."], monthly:"من ~170 EUR؛ حلول أعلى حسب المنتج.", annual:"من ~1,680 EUR؛ الحلول المتقدمة ترتفع", notes:"B2B؛ السعر يعتمد على العارض أو konfigurator وعدد المنتجات والتكامل.", source:"https://www.roomle.com/pricing" },
+
+  { num:30, name:"Autodesk Forma Site Design", url:"https://www.autodesk.com/products/forma/buy", audience:"المعماريون والمخططون الحضريون ومطورو العقار في التصميم المبكر للموقع.", edge:"تحليل الموقع والبيئة واستكشاف بدائل التصميم الأولي في بيئة سحابية.", features:["تصميم مفاهيمي للكتل والموقع.","تحليل مبكر للظروف البيئية.","مقارنة بدائل التصميم.","تعاون سحابي.","اتصال بسير عمل Autodesk وRevit.","ليس أداة BOQ تفصيلية لكل بنود التنفيذ."], monthly:"السعر يتحدد حسب السوق والخطة؛ لا يوجد رقم موحد في الصفحة العامة.", annual:"سعر الاشتراك السنوي يظهر بعد اختيار المنطقة/الحزمة", notes:"خيار مستقل أو ضمن AEC Collection؛ التحقق من السعر المحلي مطلوب.", source:"https://www.autodesk.com/products/forma/buy" },
+
+  { num:31, name:"Autodesk Takeoff / Forma Takeoff", url:"https://construction.autodesk.com/tools/construction-takeoff-software/", audience:"مهندسو الكميات ومقدرو التكاليف وفرق ما قبل التنفيذ لدى المقاولين.", edge:"حصر كميات من مخططات 2D ونماذج 3D ضمن سير عمل التقدير.", features:["قياس رقمي من رسومات 2D.","حصر من نماذج 3D/BIM.","تنظيم الكميات وتصنيفها.","تعاون ومشاركة بيانات القياس.","ارتباط بمنظومة Autodesk للبناء وإدارة المستندات.","ليس محررًا أصليًا لإنشاء كامل المبنى من الصفر."], monthly:"عرض سعر بحسب المنتجات والمنطقة.", annual:"عرض سعر بحسب الحزمة والحساب", notes:"الأسعار ليست موحدة على صفحة عامة لكل الأسواق.", source:"https://construction.autodesk.com/tools/construction-takeoff-software/" },
+
+  { num:32, name:"Bluebeam Revu", url:"https://www.bluebeam.com/pricing/", audience:"فرق البناء والاستشاريون ومقدرو الكميات ومراجعو ملفات PDF الهندسية.", edge:"قياسات وتعليقات ومراجعات PDF مع أدوات كميات وتكامل Excel في الخطة الأعلى.", features:["عرض/إنشاء/تحرير وتعليق PDF.","قياس الأطوال والمساحات والعدّ والزوايا والحجوم حسب الخطة.","مقارنة وتراكب المخططات.","تعاون Studio وإدارة الملاحظات.","Quantity Link إلى Excel في Complete.","أتمتة وروابط وتوقيعات وميزات AI في Max بحسب الخطة."], monthly:"لا يوجد دفع شهري أساسي في الأسعار المنشورة؛ اشتراك سنوي.", annual:"Basics: 260 USD؛ Core: 330 USD؛ Complete: 440 USD؛ Max: 590 USD/مستخدم/سنة", notes:"الأسعار سنوية لكل مستخدم؛ السعر/العملة قد يختلفان حسب السوق.", source:"https://www.bluebeam.com/pricing/" },
+
+  { num:33, name:"PlanSwift", url:"https://www.planswift.com/pricing/", audience:"مقدرو الكميات والمقاولون ومقاولو التخصصات الذين يحصرون من PDF/CAD.", edge:"حصر كميات وربطها بالتكلفة والمواد والعمالة والتجميعات مع أدوات AI.", features:["قياس الأطوال والمساحات والحجوم.","عد رموز وخصم فتحات.","تجميعات مواد وعمالة قابلة للتخصيص.","تقدير التكاليف وإعداد عروض.","أدوات AI مثل Auto Count وAuto Scale وAuto Bookmark بحسب الخطة.","تصدير بيانات إلى Excel."], monthly:"لا يوجد اشتراك شهري معلن للخطة الأساسية.", annual:"Essential: 2,000 USD؛ Core: 3,000 USD لكل مقعد/سنة", notes:"تجربة مجانية 14 يومًا؛ تسعير سنوي لكل مقعد.", source:"https://www.planswift.com/pricing/" },
+
+  { num:34, name:"STACK Takeoff & Estimate", url:"https://www.stackct.com/takeoff-and-estimate-pricing/", audience:"المقاولون ومقدرو الكميات ومقدمو العطاءات وفرق التقدير.", edge:"سير عمل سحابي يجمع القياس وحصر المواد والعمالة والتقدير.", features:["قياسات وتعليقات على المخططات.","حصر المواد والعمالة.","تقديرات وعروض تجارية.","مشاريع ومستندات متعددة.","مساعد AI في الخطط المؤهلة.","أدوات تعاون وإدارة ملفات."], monthly:"Premium: 249 USD/مستخدم؛ Pro: 299 USD/مستخدم (بدفع سنوي)", annual:"Premium: 2,988 USD؛ Pro: 3,588 USD/مستخدم/سنة (×12)", notes:"سعر الشهر المعروض مكافئ للفوترة السنوية؛ تحقق من الخطة عند الشراء.", source:"https://www.stackct.com/takeoff-and-estimate-pricing/" },
+
+  { num:35, name:"Togal.AI", url:"https://www.togal.ai/pricing", audience:"مقدرو الكميات ومقاولو البناء وفرق العطاءات التي تعمل من مخططات PDF.", edge:"أتمتة التعرف على العناصر وقياس المساحات والأطوال والأعداد باستخدام AI.", features:["Automated takeoffs.","البحث عن الرموز والعناصر.","قياس المساحات والأطوال والأعداد.","محادثة مع المخطط والبحث في الصور ضمن الخطة.","تعاون داخلي وخارجي.","تدريب ودعم مؤسسي في Business."], monthly:"299 USD/مستخدم/شهر مع الفوترة السنوية", annual:"3,588 USD/مستخدم/سنة", notes:"Business لأربعة مستخدمين فأكثر بعرض مخصص.", source:"https://www.togal.ai/pricing" },
+
+  { num:36, name:"RIB CostX", url:"https://www.rib-software.com/en/products/rib-costx", audience:"مقدرو الكميات والاستشاريون وشركات المقاولات ومؤسسات التقدير.", edge:"قياس 2D و3D BIM وربط الكميات بجداول التقدير والتغييرات.", features:["حصر من رسومات 2D.","أخذ كميات من نماذج BIM.","جداول قياس مترابطة.","تقدير تكاليف وتقارير.","مقارنة رسومات وإصدارات.","أدوات تتبع تغير الكميات."], monthly:"عرض سعر", annual:"عرض سعر", notes:"الترخيص والتسعير حسب المنتج والمنطقة وعدد المستخدمين.", source:"https://www.rib-software.com/en/products/rib-costx" },
+
+  { num:37, name:"eTakeoff Dimension", url:"https://etakeoff.com/pricing/", audience:"مقدرو الكميات ومقاولو التشطيبات والمقاولون العامون الذين يستخدمون PDF وCAD.", edge:"القياس الإلكتروني من المخططات مع تكامل Excel وتجميعات مخصصة.", features:["قياس الأطوال والمساحات والأعداد من المخططات.","مقارنة الرسومات والطبقات.","أدوات Snap وScale.","تجميعات وWBS ومناطق مراحل.","تكامل متقدم مع Excel.","إضافة Togal.AI اختيارية."], monthly:"لا يوجد دفع شهري مستقل معلن؛ الاشتراك سنوي.", annual:"Advanced: 795 USD؛ Premier: 1,495 USD؛ إضافة Togal.AI: 1,800 USD/مستخدم/سنة", notes:"الأسعار من الصفحة الرسمية؛ لكل مستخدم سنويًا.", source:"https://etakeoff.com/pricing/" },
+
+  { num:38, name:"MeasureSquare", url:"https://measuresquare.com/pricing/measuresquare-8/", audience:"مقاولو ومقدرو الأرضيات والبلاط والحجر ومشاريع السكن والتجارة.", edge:"حصر الأرضيات وتخطيط أنماط البلاط والمواد وتحسين الهدر مع تقدير العمالة.", features:["رفع وقياس مخططات PDF.","حساب مواد وعمالة.","تخطيط البلاط والحجر والأنماط.","تحسين الهدر والقص والتوزيع.","عروض أسعار وتوقيع إلكتروني.","تحليل مخطط AI وتصدير Excel في الخطط الأعلى."], monthly:"Retail: 54 USD؛ الخطط الأعلى حسب المنتج/العرض.", annual:"Retail: 540 USD؛ Multi-family: 1,640؛ Commercial: 1,970 USD/مستخدم/سنة", notes:"أسعار أمريكية لمنتج MeasureSquare 8؛ الخطط الأعلى لها أسعار شهرية منفصلة.", source:"https://measuresquare.com/pricing/measuresquare-8/" },
+
+  { num:39, name:"Buildxact", url:"https://www.buildxact.com/us/pricing/", audience:"المقاولون السكنيون وشركات التجديد والبناء التي تحتاج تقديرًا وجدولة ومشتريات.", edge:"ربط الحصر بالتقدير وعروض الأسعار والمشتريات والجدول وإدارة الأعمال.", features:["Digital takeoffs وتقدير تكاليف.","عروض أسعار وتوقيع رقمي.","إدارة العملاء والطلبات.","أوامر شراء وتكاملات موردين.","إدارة وظائف ومواعيد وفرق الموقع.","تطبيق ميداني وبوابة عميل بحسب الخطة.","إضافات AI لتوليد ومراجعة التقديرات."], monthly:"Foundation: 199 USD؛ Pro: 399 USD؛ Master: 599 USD (مع الدفع السنوي 169/339/509 USD شهريًا مكافئًا).", annual:"Foundation: 2,030 USD؛ Pro: 4,070 USD؛ Master: 6,110 USD/سنة", notes:"الأسعار الأمريكية لا تشمل الضرائب؛ توجد خطة Go مجانية محدودة.", source:"https://www.buildxact.com/us/pricing/" },
+
+  { num:40, name:"Groundplan", url:"https://groundplan.com/pricing", audience:"مقاولو الكهرباء والتكييف والسباكة والتخصصات التي تحصر من مخططات.", edge:"أدوات حصر مصممة حسب التخصصات ورموز الأعمال.", features:["قياسات 2D من ملفات المخطط.","رموز وعد عناصر حسب التخصص.","تنظيم takeoffs حسب المجال.","أدوات للتقدير/تجميع المواد وفق الخطة.","تعاون ومشاركة ملفات.","ليست منصة BIM لتأليف مبنى كامل."], monthly:"تجربة مجانية؛ السعر الشهري غير مثبت برقم موحد.", annual:"عرض سعر/خطة بحسب السوق والمستخدمين", notes:"يجب التحقق من صفحة التسعير أو التواصل؛ لا أضع رقمًا غير مثبت.", source:"https://groundplan.com/pricing" },
+
+  { num:41, name:"Procore", url:"https://www.procore.com/pricing", audience:"المقاولون العامون والشركات الكبيرة ومديرو المشاريع والماليون والفرق الميدانية.", edge:"منظومة إدارة إنشاءات تربط المشروع والمستندات والفرق والتكلفة والجودة.", features:["إدارة مشاريع ومستندات ورسومات.","RFIs وSubmittals ومحاضر الاجتماعات.","التقارير اليومية والصور والمهام.","الجدولة والجودة والسلامة.","الميزانية والتغييرات والالتزامات المالية بحسب المنتجات.","تكاملات وواجهات API.","لا يستبدل محرر BIM متخصصًا لتأليف المبنى."], monthly:"عرض سعر مؤسسي", annual:"عرض سعر مؤسسي بحسب حجم العمل والمنتجات", notes:"لا يوجد سعر عام ثابت؛ يتغير حسب المنتجات وحجم أعمال الإنشاء السنوي.", source:"https://www.procore.com/pricing" },
+
+  { num:42, name:"Taqdir — تقدير", url:"https://taqdir.app/", audience:"المقاولون ومقدرو الكميات وشركات البناء في السوق السعودي.", edge:"توجه محلي لحصر الكميات وBOQ والتقدير المالي بمساعدة AI.", features:["تحليل مخططات واستخراج كميات وفق المزايا المعلنة.","إعداد BOQ وتقدير تكلفة.","أدوات تسعير وتخطيط مالي بحسب الخدمة.","ميزات AI لقراءة المستندات وفق العرض.","لا يتضح من المعلومات العامة أنه محرر CAD/BIM كامل لعناصر المبنى."], monthly:"غير معلن في صفحة عامة يمكن تثبيت سعرها.", annual:"غير معلن؛ يتطلب التسجيل أو التواصل", notes:"الميزات المعلنة لم تخضع لاختبار مستقل في هذا الملف.", source:"https://taqdir.app/" },
+
+  { num:43, name:"EtimadCo — اعتمادكو", url:"https://etimadco.com/", audience:"المقاولون وفرق حصر الكميات والتسعير وإدارة الأعمال في السوق العربي.", edge:"أدوات عربية لحصر BOQ وربط البنود والتسعير وسير عمل المقاولات.", features:["حصر كميات وتسعير بنود.","قوالب ووحدات حصر.","تقارير BOQ بحسب الخدمات.","أدوات تسعير ومشتريات/خدمات أعمال بحسب المنتج.","لا يثبت الوصف العام وجود محرر 2D/3D وMEP كامل مثل برامج BIM."], monthly:"خطة/تجربة مجانية؛ السعر المدفوع غير معلن موحدًا.", annual:"حسب الخدمة أو العرض؛ غير معلن", notes:"تحقق من صفحة الخدمة المحددة قبل اعتماد السعر.", source:"https://etimadco.com/" },
+
+  { num:44, name:"SmaartBuild", url:"https://smaartbuild.com/", audience:"الملاك والمقاولون ومستخدمو التحليل السريع للمخططات في السعودية.", edge:"تحليل مخططات وتوليد مخرجات 3D وتقارير/تقدير بمساعدة AI وفق ما تعلنه المنصة.", features:["تحليل مخطط/وصف وتوليد نتائج تصميم وفق الخدمة.","مخرجات 2D/3D وتقارير.","تقدير كميات/تكلفة بحسب المزايا المعلنة.","توجه إلى كود البناء السعودي بحسب الموقع.","لا يتضح أنه محرر يدوي كامل لعناصر BIM."], monthly:"2,500 SAR/شهر في الخطة الاحترافية المعروضة.", annual:"22,500 SAR/سنة بحسب السعر المعروض", notes:"الأسعار المعلنة على الموقع؛ أكدها قبل الشراء أو المقارنة التعاقدية.", source:"https://smaartbuild.com/" },
+
+  { num:45, name:"Rhino 3D", url:"https://www.rhino3d.com/", audience:"المعماريون ومصممو الأشكال المعقدة والتصميم الصناعي والهندسة والتصنيع الرقمي.", edge:"نمذجة NURBS دقيقة ومرنة للأشكال والأسطح المعقدة.", features:["نمذجة 3D دقيقة للأشكال الحرة.","أدوات CAD وتحرير أسطح ومجسمات.","استيراد وتصدير صيغ متعددة.","أدوات تطوير وبرمجة وتوسعات مثل Grasshopper.","يستخدم في العمارة والتصنيع والنماذج المعقدة.","لا يوفر وحده BOQ/إدارة مقاولات شاملة."], monthly:"لا يوجد اشتراك شهري أساسي للرخصة الدائمة.", annual:"~995 USD لرخصة تجارية دائمة؛ قد يختلف السعر الإقليمي", notes:"رخصة دائمة؛ تحقق من السعر حسب الدولة والإصدار.", source:"https://www.rhino3d.com/sales/" },
+
+  { num:46, name:"Blender", url:"https://www.blender.org/", audience:"فنانو 3D ومصممو المرئيات المعمارية وصانعو الرسوم المتحركة والمحتوى.", edge:"تصيير قوي ومجاني مع تحكم واسع بالنمذجة والخامات والإضاءة.", features:["نمذجة 3D وتحريك ومحاكاة.","محركات تصيير مثل Cycles وEevee.","مواد PBR وإضاءة وبيئات HDR.","تركيب ومؤثرات وفيديو.","إضافات وبرمجة Python.","لا يوفر محرر BIM معماريًا أو BOQ تنفيذيًا جاهزًا بصورة أساسية."], monthly:"مجاني", annual:"مجاني", notes:"مفتوح المصدر؛ قد توجد تكاليف لخدمات أو إضافات خارجية اختيارية.", source:"https://www.blender.org/" },
+
+  { num:47, name:"Autodesk 3ds Max", url:"https://www.autodesk.com/products/3ds-max/overview", audience:"فنانو التصيير المعماري والمشهد ثلاثي الأبعاد والتحريك والأصول الرقمية.", edge:"التحكم العميق بالمشهد والخامات والإضاءة وإخراج مرئيات احترافية.", features:["نمذجة 3D ومواد وخامات.","إضاءة وكاميرات ومحركات تصيير.","تحريك ومؤثرات ومشاهد معقدة.","مكتبات وإضافات وتكامل مع أدوات التصور.","استخدام معماري وترفيهي وتصميم منتجات.","ليس برنامج BOQ أو BIM معماري متكاملًا وحده."], monthly:"255 USD/شهر", annual:"2,010 USD/سنة", notes:"اشتراك سنوي أو شهري؛ تحقق من السعر الإقليمي عند الشراء.", source:"https://www.autodesk.com/products/3ds-max/buy" },
+
+  { num:48, name:"Lumion", url:"https://lumion.com/product/buy", audience:"المعماريون ومصممو المناظر الطبيعية ومنتجو صور وفيديوهات المشاريع.", edge:"تحويل نموذج CAD/BIM إلى صور وفيديوهات وبانوراما عالية الواقعية بسرعة.", features:["رندر معماري تفاعلي.","مكتبة آلاف الأصول والمواد.","خامات PBR وتأثيرات جوية وبيئية.","صور وفيديوهات وبانوراما 360°.","أدوات AI لتحسين الصور والمواد ورفع الدقة.","تعاون سحابي ودمج ملفات فريق.","لا ينشئ مخططًا هندسيًا أو BOQ."], monthly:"96 USD/مستخدم مع دفع مقدمًا لعقد سنة", annual:"1,149 USD/سنة", notes:"السعر الرسمي لخطة Lumion Pro السنوية؛ قبل الضرائب وقد تختلف الإصدارات.", source:"https://lumion.com/product/buy" },
+
+  { num:49, name:"D5 Render", url:"https://www.d5render.com/pricing", audience:"المعماريون ومصممو 3D والديكور ومكاتب التصيير المرئي.", edge:"تصيير آني مع تتبع الأشعة وإمكانيات AI ومزامنة مع برامج النمذجة.", features:["رندر معماري فوري ومسارات إضاءة متقدمة.","مكتبة أصول ومواد.","صور وفيديوهات وجولات.","أدوات AI لتحسين العرض والخامات بحسب الخطة.","تكامل مباشر/مزامنة مع أدوات CAD/BIM محددة.","ليس محررًا هندسيًا أو حاسبة BOQ."], monthly:"Community مجاني؛ السعر الشهري للخطط المدفوعة يتغير حسب العرض.", annual:"Pro ~360 USD/سنة في السعر المرصود؛ Team بحسب المقاعد", notes:"تحقق من الخطة الحالية والمنطقة؛ المزايا المجانية والمدفوعة تختلف.", source:"https://www.d5render.com/pricing" },
+
+  { num:50, name:"Enscape", url:"https://www.chaos.com/enscape/buy-online", audience:"المعماريون ومهندسو BIM الذين يريدون عرض النموذج مباشرة أثناء التصميم.", edge:"تصيير ومراجعة فورية متكاملة مع برامج التأليف المعماري.", features:["رندر آني للنماذج.","تكامل مع Revit وSketchUp وArchicad وغيرها بحسب الخطة.","مكتبة أصول وخامات وإضاءة.","جولات ومرئيات للمراجعة.","مشاركة مشاهد/روابط بحسب المنتج.","لا يقدم عادةً محرر نموذج أصلي أو BOQ."], monthly:"الخطة الفردية السنوية تعادل ~47.90 USD/شهر؛ سعر شهري مباشر حسب الخطة.", annual:"Solo: 574.80 USD؛ Premium: 670.80 USD؛ Collection: ~730.80 USD/سنة", notes:"أسعار مرصودة للتراخيص السنوية؛ تحقق من السعر الحالي عند الشراء.", source:"https://www.chaos.com/enscape/buy-online" },
+
+  { num:51, name:"Twinmotion", url:"https://www.twinmotion.com/license", audience:"المعماريون ومصممو العروض التفاعلية والمرئيات المعمارية.", edge:"إنتاج صور وفيديو وجولات VR ومشاهد بيئية مع تكامل مباشر مع برامج النمذجة.", features:["رندر معماري آني.","صور وفيديوهات وأنيميشن وVR.","مكتبات أصول وبيئات وطقس ومواسم.","مزامنة مباشرة مع Revit وArchicad وRhino وSketchUp وغيرها.","Twinmotion Cloud بحسب الرخصة.","لا ينشئ وحده مخططات هندسية أو BOQ."], monthly:"مجاني للأفراد/الشركات المؤهلة بإيرادات أقل من 1 مليون USD؛ لا يوجد شهر مدفوع منفصل.", annual:"445 USD/مقعد/سنة للشركات فوق حد الإيرادات أو عند الحاجة إلى Twinmotion Cloud", notes:"يعتمد على أهلية الإيراد السنوي وسياسة الترخيص؛ راجع الشروط.", source:"https://www.twinmotion.com/license" },
+
+  { num:52, name:"Autodesk 123D Design (متوقف)", url:"https://www.autodesk.com/solutions/123d-apps", audience:"كان موجهًا للهواة والمستخدمين الذين يريدون إنشاء نماذج 3D مبسطة.", edge:"تبسيط النمذجة ثلاثية الأبعاد للمستخدم غير المتخصص.", features:["نمذجة 3D تاريخية.","أدوات إنشاء وتعديل أشكال.","ليس منتجًا نشطًا الآن.","لا يوجد اشتراك أو دعم جديد للمنتج الأصلي."], monthly:"غير متاح — متوقف", annual:"غير متاح — متوقف", notes:"منتج تاريخي؛ لا تقارن سعره كسعر حالي.", source:"https://www.autodesk.com/solutions/123d-apps", historic:true },
+
+  { num:53, name:"Autodesk 123D Catch (متوقف)", url:"https://www.autodesk.com/solutions/123d-apps", audience:"كان موجهًا للهواة والمستخدمين الذين يريدون تحويل الصور إلى نماذج ثلاثية الأبعاد.", edge:"التصوير المساحي من صور متعددة.", features:["تحويل صور إلى نموذج 3D تاريخيًا.","التقاط شكل موجود من صور متعددة.","المنتج متوقف ولا يتلقى دعمًا جديدًا.","لا يقدم اشتراكًا حاليًا."], monthly:"غير متاح — متوقف", annual:"غير متاح — متوقف", notes:"منتج تاريخي؛ لا يوجد سعر اشتراك حالي.", source:"https://www.autodesk.com/solutions/123d-apps", historic:true },
+
+  { num:54, name:"Autodesk Building Design Suite (متقاعدة)", url:"https://www.autodesk.com/support/account/manage/billing/retired-products", audience:"كانت حزمة موجهة للمكاتب الهندسية التي تريد مجموعة أدوات CAD/BIM من Autodesk.", edge:"تجميع عدة منتجات هندسية ضمن حزمة واحدة.", features:["أدوات تصميم ورسم هندسي ضمن حزمة تاريخية.","تكامل بين منتجات Autodesk بحسب الإصدار.","الحزمة متقاعدة/مستبدلة؛ ليست خيار شراء جديدًا بالصيغة القديمة."], monthly:"غير متاح كمنتج جديد", annual:"غير متاح كمنتج جديد", notes:"استخدم أسعار المنتجات/الحزم الحالية بدل تسعير الحزمة المتقاعدة.", source:"https://www.autodesk.com/support/account/manage/billing/retired-products", historic:true },
+
+  { num:55, name:"Project Dragonfly (تاريخي)", url:"https://resources.homestyler.com/our-story/", audience:"كان نموذجًا مبكرًا للتصميم المنزلي عبر المتصفح للمستخدمين غير المختصين.", edge:"تخطيط المنزل على الويب دون برنامج مكتبي تقليدي.", features:["تجربة تاريخية لتخطيط المنزل عبر المتصفح.","تصميم وتأثيث بصري مبكر.","تطور إلى Homestyler ولم يعد منتجًا مستقلًا بسعر حالي."], monthly:"غير متاح كمنتج مستقل", annual:"غير متاح كمنتج مستقل", notes:"للمقارنة الحالية استخدم Homestyler بدل الاسم التاريخي.", source:"https://resources.homestyler.com/our-story/", historic:true }
+];
+
+// ============ RENDER DETAILED TABLE ============
+const detailBody = document.getElementById('detailBody');
+platforms.forEach(p => {
+  const tr = document.createElement('tr');
+  if (p.ours) tr.className = 'row-ours';
+  if (p.historic) tr.className = 'row-historic';
+  tr.dataset.name = p.name.toLowerCase();
+  tr.innerHTML = `
+    <td class="col-num">${p.num}</td>
+    <td class="col-name">${p.name}</td>
+    <td class="col-link"><a href="${p.url}" target="_blank" rel="noopener">فتح ↗</a></td>
+    <td class="col-audience">${p.audience}</td>
+    <td class="col-edge">${p.edge}</td>
+    <td class="col-features">${p.features.map(f=>`<span>• ${f}</span>`).join('')}</td>
+    <td class="col-price">${p.monthly || '—'}</td>
+    <td class="col-price">${p.annual || '—'}</td>
+    <td class="col-notes">${p.notes}</td>
+    <td class="col-source"><a href="${p.source}" target="_blank" rel="noopener">${p.source.replace('https://','').replace('http://','').slice(0,32)}</a></td>
+  `;
+  detailBody.appendChild(tr);
+});
+
+// Search
+document.getElementById('searchInput').addEventListener('input', (e) => {
+  const q = e.target.value.toLowerCase().trim();
+  document.querySelectorAll('#detailBody tr').forEach(tr => {
+    tr.style.display = (!q || tr.dataset.name.includes(q)) ? '' : 'none';
+  });
+});
+
+// Navigation
+(function(){
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  const dotsWrap = document.getElementById('dots');
+  const curNum = document.getElementById('curNum');
+  const totalNum = document.getElementById('totalNum');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const bar = document.getElementById('progressBar');
+  let current = 0;
+  totalNum.textContent = total;
+  slides.forEach((_,i)=>{
+    const d = document.createElement('span');
+    d.className = 'dot' + (i===0 ? ' active' : '');
+    d.addEventListener('click', ()=>go(i));
+    dotsWrap.appendChild(d);
+  });
+  const dots = Array.from(dotsWrap.children);
+  function go(idx){
+    if(idx<0 || idx>=total || idx===current) return;
+    slides[current].classList.remove('active');
+    current = idx;
+    slides[current].classList.add('active');
+    slides[current].scrollTop = 0;
+    dots.forEach((d,i)=>{
+      d.classList.toggle('active', i===current);
+      d.classList.toggle('done', i<current);
+    });
+    curNum.textContent = current + 1;
+    bar.style.width = ((current+1)/total*100) + '%';
+    prevBtn.disabled = current===0;
+    nextBtn.disabled = current===total-1;
+  }
+  prevBtn.addEventListener('click', ()=>go(current-1));
+  nextBtn.addEventListener('click', ()=>go(current+1));
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'ArrowLeft' || e.key === ' ' || e.key === 'PageDown'){ go(current+1); e.preventDefault(); }
+    else if(e.key === 'ArrowRight' || e.key === 'PageUp'){ go(current-1); e.preventDefault(); }
+    else if(e.key === 'Home'){ go(0); e.preventDefault(); }
+    else if(e.key === 'End'){ go(total-1); e.preventDefault(); }
+  });
+  let touchStart = null;
+  document.addEventListener('touchstart', (e)=>{ touchStart = e.touches[0].clientX; }, {passive:true});
+  document.addEventListener('touchend', (e)=>{
+    if(touchStart === null) return;
+    const dx = e.changedTouches[0].clientX - touchStart;
+    if(Math.abs(dx) > 50){ if(dx > 0) go(current+1); else go(current-1); }
+    touchStart = null;
+  }, {passive:true});
+  bar.style.width = (1/total*100) + '%';
+  prevBtn.disabled = true;
+})();
+</script>
+</body>
+</html>
